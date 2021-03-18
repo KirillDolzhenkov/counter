@@ -1,0 +1,15 @@
+
+.baseValue {
+    border-radius: 5px;
+    text-align: center;
+    font-size: 25px;
+    outline: 0;
+}
+
+.redValue {
+    border-radius: 5px;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+    outline: 0;
+}

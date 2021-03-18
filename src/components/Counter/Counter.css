@@ -1,0 +1,25 @@
+.CounterBody{
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 60vh;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #ff7f8c;
+}
+
+.Display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BtnArea {
+    display: grid;
+    margin: auto 0;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+    'i r';
+}
