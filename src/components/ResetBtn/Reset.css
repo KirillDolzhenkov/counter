@@ -1,20 +1,29 @@
 .ResetBtn {
+    border: 2px solid #00AAFF;
     grid-area: r;
     font-size: 15px;
     padding: 7px 15px 7px 15px;
     margin-right: 25px;
     width: 100px;
-    background-color: #EDEEF0;
+    /*background-color: #EDEEF0;*/
+    background-color:  #282c34;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .ResetBtn:hover {
+    border: 2px solid #00AAFF;
     background-color: #b0c4d4;
     box-shadow: 1px 1px 5px grey;
+    color: white;
+    outline: 0;
 }
 
 .ResetBtn:active {
+    border: 2px solid #00AAFF;
     background-color: #4e5d74;
     box-shadow: 1px 1px 5px grey;
+    outline: 0;
 }
+

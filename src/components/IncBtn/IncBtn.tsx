@@ -8,6 +8,7 @@ type IncBtnPropsType = {
 
 export const IncBtn: React.FC<IncBtnPropsType> = (props) => {
     const onClickHandler = () =>{props.addValue()}
+    /*const styleBtnValue = props.onDisplay === 0 ? 'IncBtn' : 'DisabledIncBtnBtn'*/
     return (
         <>
             <span>

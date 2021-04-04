@@ -14,12 +14,13 @@ function App() {
         setDisplayValue(0);
     }
 
-    let onDisplay = displayValue;
+    /*let onDisplay = displayValue;*/
 
     return (
         <div className="App">
             <Counter
-                onDisplay={onDisplay}
+                /*onDisplay={onDisplay}*/
+                onDisplay={displayValue}
                 addValue={AddValue}
                 resetValue={ResetValue}
             />

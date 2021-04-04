@@ -6,7 +6,7 @@ type DisplayPropsType = {
 }
 
 export const Display: React.FC<DisplayPropsType> = (props) => {
-    let classNameValue = props.onDisplay === 5 ? 'redValue' : 'baseValue';
+    const classNameValue = props.onDisplay === 5 ? 'redValue' : 'baseValue';
     return(
         <div>
             <h2>

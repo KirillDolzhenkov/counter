@@ -8,6 +8,7 @@ type ResetBtnPropsType = {
 
 export const ResetBtn: React.FC<ResetBtnPropsType> = (props) => {
     const onClickHandler = ()=>{props.resetValue()}
+    /*const styleBtnValue = props.onDisplay === 0 ? 'ResetBtn' : 'DisabledResetBtn'*/
     return (
         <>
             <span>
