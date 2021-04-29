@@ -12,6 +12,7 @@
     color: #282c34;
     border-radius: 5px;
     cursor: pointer;
+    font-weight:bold;
     outline: 0;
 }
 
@@ -28,5 +29,6 @@
     background-color:  #282c34;
     /*background-color: #28c9b2;*/
     /*box-shadow: 1px 1px 5px grey;*/
+    font-weight:bold;
     color: #00AAFF;
 }
