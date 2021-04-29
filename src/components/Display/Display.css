@@ -2,16 +2,19 @@
 .baseValue {
     background-color: #282c34;
     border: 2px solid #00AAFF;
+    height: 5vh;
     border-radius: 5px;
     text-align: center;
     font-size: 25px;
-    color: white;
+    /*color: white;*/
+    color: #00AAFF;
     outline: 0;
 }
 
 .redValue {
     background-color: #282c34;
     border: 2px solid #00AAFF;
+    height: 5vh;
     border-radius: 5px;
     text-align: center;
     font-size: 25px;
