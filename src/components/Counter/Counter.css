@@ -22,9 +22,6 @@
     margin: auto 0;
     justify-content: center;
     align-items: center;
-    /*border: 2px solid #00AAFF;
-    height: 7vh;
-    width: 50vh;*/
     grid-template-areas:
     'i r';
 }

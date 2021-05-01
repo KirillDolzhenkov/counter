@@ -8,6 +8,7 @@ type CounterPropsType = {
     addValue: () => void
     resetValue: () => void
     onDisplay: number
+
 }
 
 export const Counter: React.FC<CounterPropsType> = (props) => {

@@ -1,5 +1,4 @@
 .SettingsBody{
-    /*background: linear-gradient(to right, #00AAFF, #00FF6C);*/
     background: #282c34;
     justify-content: center;
     align-items: center;
@@ -7,15 +6,9 @@
     width: 60vh;
     padding: 20px;
     border-radius: 15px;
-    /*border: 2px solid #ff7f8c;*/
     border: 2px solid #00AAFF;
 }
 
-/*.Display{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
 .SettingsArea{
     justify-content: center;
     align-items: center;
@@ -23,7 +16,7 @@
 }
 
 
-.BtnArea {
+.SBtnArea {
     display: grid;
     margin: auto 0;
     justify-content: center;
@@ -32,5 +25,22 @@
     height: 7vh;
     width: 50vh;*/
     grid-template-areas:
-    'i r';
+    's';
 }
+
+.SetInput {
+    background-color: #282c34;
+    border: 2px solid #00AAFF;
+    height: 35px;
+    width: 30vh;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 30px;
+    /*color: white;*/
+    color: #00AAFF;
+    font-weight:bold;
+    outline: 0;
+}
+
+
+

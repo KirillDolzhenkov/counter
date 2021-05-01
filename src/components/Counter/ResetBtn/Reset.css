@@ -5,10 +5,7 @@
     padding: 7px 15px 7px 15px;
     margin-right: 25px;
     width: 100px;
-    /*background-color: #EDEEF0;*/
-    /*background-color:  #282c34;*/
     background-color:  #00AAFF;
-    /*color: white;*/
     color: #282c34;
     border-radius: 5px;
     cursor: pointer;
@@ -16,18 +13,9 @@
     outline: 0;
 }
 
-/*.ResetBtn:hover {
-    border: 2px solid #00AAFF;
-    background-color: #b0c4d4;
-    box-shadow: 1px 1px 5px grey;
-    color: white;
-}*/
-
 .ResetBtn:active {
     border: 2px solid #00AAFF;
     background-color:  #282c34;
-    /*background-color: #28c9b2;*/
-    /*box-shadow: 1px 1px 5px grey;*/
     font-weight:bold;
     color: #00AAFF;
 }
