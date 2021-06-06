@@ -6,39 +6,44 @@ import {Settings} from "./components/Settings/Settings";
 
 
 function App() {
-    const [startValue, setStartValue] = useState<number>(0)
-    const [displayValue, setDisplayValue] = useState<number>(startValue)
+    /*const [startValue, setStartValue] = useState<number>(0)*/
+
+
+    /*const [maxValue, setMaxValue] = useState<number>(0)
+    const [startValue, setStartValue] = useState<number>(0)*/
+
+    const [displayValue, setDisplayValue] = useState<number>(0)
 
 
 
-    const AddValue = () => {
+
+
+    const addValue = () => {
         setDisplayValue(displayValue + 1);
     }
 
-    const ResetValue = () => {
+    const resetValue = () => {
         setDisplayValue(0);
     }
-    const SetStartValue = (value: number) => {
+    const addMaxValue = (value: number) => {
+       /* setMaxValue(value)*/
+    }
+    const addStartValue = (value: number) => {
         setDisplayValue(value)
     }
-/*    const SetInputValue = (value: number) => {
 
-    }*/
-    /*let onDisplay = displayValue;*/
 
     return (
         <div className="App">
             <Settings
-                setStartValue={SetStartValue}
-
+                addStartValue={addStartValue}
+                addMaxValue={addMaxValue}
             />
 
             <Counter
-                /*onDisplay={onDisplay}*/
                 onDisplay={displayValue}
-                addValue={AddValue}
-                resetValue={ResetValue}
-
+                addValue={addValue}
+                resetValue={resetValue}
             />
         </div>
     );

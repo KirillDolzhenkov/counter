@@ -2,11 +2,12 @@ import React from "react";
 import "./SetBtn.css"
 
 type SetBtnPropsType = {
-    setStartValue: (value: number) => void
+    addStartValue: (value: number) => void
+    startInputValue: number
 }
 
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
-    const onclickHandler =()=> {/*props.setStartValue()*/}
+    const onclickHandler =()=> {props.addStartValue(props.startInputValue)}
     return(
         <div>
             <button
