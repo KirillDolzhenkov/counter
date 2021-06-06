@@ -2,16 +2,17 @@ import React from "react";
 import './Display.css'
 
 type DisplayPropsType = {
-    onDisplay: number
+    count: number
+    maxValue: number
 }
 
 export const Display: React.FC<DisplayPropsType> = (props) => {
-    const classNameValue = props.onDisplay === 5 ? 'redValue' : 'baseValue';
+    const classNameValue = props.count === props.maxValue ? 'redValue' : 'baseValue';
     return(
         <div>
             <h2>
                 <input
-                    value={props.onDisplay}
+                    value={props.count}
                     className={classNameValue}
                 />
             </h2>

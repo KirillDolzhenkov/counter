@@ -3,11 +3,13 @@ import "./SetBtn.css"
 
 type SetBtnPropsType = {
     addStartValue: (value: number) => void
-    startInputValue: number
+    addMaxValue: (value: number) => void
+    startValue: number
+    maxValue: number
 }
 
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
-    const onclickHandler =()=> {props.addStartValue(props.startInputValue)}
+    const onclickHandler =()=> {props.addStartValue(props.startValue)}
     return(
         <div>
             <button

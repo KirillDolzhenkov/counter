@@ -7,7 +7,8 @@ import {ResetBtn} from "../ResetBtn/ResetBtn";
 type CounterPropsType = {
     addValue: () => void
     resetValue: () => void
-    onDisplay: number
+    count: number
+    maxValue: number
 
 }
 
@@ -16,17 +17,19 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
         <div className={'CounterBody'}>
             <div className={'Display'}>
                 <Display
-                    onDisplay={props.onDisplay}
+                    maxValue={props.maxValue}
+                    count={props.count}
                 />
             </div>
             <div className={'BtnArea'}>
                 <IncBtn
                     addValue={props.addValue}
-                    onDisplay={props.onDisplay}
+                    count={props.count}
+                    maxValue={props.maxValue}
                 />
                 <ResetBtn
                     resetValue={props.resetValue}
-                    onDisplay={props.onDisplay}
+                    count={props.count}
                 />
             </div>
         </div>

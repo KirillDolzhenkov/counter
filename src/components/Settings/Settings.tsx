@@ -5,19 +5,21 @@ import {SetBtn} from "./SetBtn/SetBtn";
 type SettingsPropsType = {
     addStartValue: (value: number) => void
     addMaxValue: (value: number) => void
-
+    startValue: number
+    maxValue: number
 }
 
 export const Settings: React.FC<SettingsPropsType> = (props) => {
 
-    const [maxInputValue, setMaxInputValue] = useState<number>(0)
-    const [startInputValue, setStartInputValue] = useState<number>(0)
+    /*   const [maxInputValue, setMaxInputValue] = useState<number>(0)
+   const [startInputValue, setStartInputValue] = useState<number>(0)*/
+
+    const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
+        props.addStartValue(parseInt(e.currentTarget.value))
+    }
 
     const maxValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
-        setMaxInputValue(parseInt(e.currentTarget.value))
-    }
-    const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
-        setStartInputValue(parseInt(e.currentTarget.value))
+        props.addMaxValue(parseInt(e.currentTarget.value))
     }
     return (
         <div className={"SettingsBody"}>
@@ -27,7 +29,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     <input
                         type={"number"}
                         className={'SetInput'}
-                        value={maxInputValue}
+                        value={props.maxValue}
                         onChange={maxValueHandler}
                     />
                 </h2>
@@ -36,7 +38,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     <span><input
                         type={"number"}
                         className={'SetInput'}
-                        value={startInputValue}
+                        value={props.startValue}
                         onChange={startValueHandler}
                     /></span>
                 </h2>
@@ -44,7 +46,9 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
             <div className={"SBtnArea"}>
                 <SetBtn
                     addStartValue={props.addStartValue}
-                    startInputValue={startInputValue}
+                    addMaxValue={props.addMaxValue}
+                    startValue={props.startValue}
+                    maxValue={props.maxValue}
 
                 />
             </div>

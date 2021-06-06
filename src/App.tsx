@@ -9,27 +9,30 @@ function App() {
     /*const [startValue, setStartValue] = useState<number>(0)*/
 
 
-    /*const [maxValue, setMaxValue] = useState<number>(0)
-    const [startValue, setStartValue] = useState<number>(0)*/
+    const [maxValue, setMaxValue] = useState<number>(0)
+    const [startValue, setStartValue] = useState<number>(0)
 
-    const [displayValue, setDisplayValue] = useState<number>(0)
+
+    const [count, setCount] = useState<number>(0)
 
 
 
 
 
     const addValue = () => {
-        setDisplayValue(displayValue + 1);
+        setCount(count + 1);
     }
 
     const resetValue = () => {
-        setDisplayValue(0);
+        setCount(0);
     }
+
     const addMaxValue = (value: number) => {
-       /* setMaxValue(value)*/
+        setMaxValue(value)
     }
+
     const addStartValue = (value: number) => {
-        setDisplayValue(value)
+        setStartValue(value)
     }
 
 
@@ -38,12 +41,15 @@ function App() {
             <Settings
                 addStartValue={addStartValue}
                 addMaxValue={addMaxValue}
+                startValue={startValue}
+                maxValue={maxValue}
             />
 
             <Counter
-                onDisplay={displayValue}
+                count={count}
                 addValue={addValue}
                 resetValue={resetValue}
+                maxValue={maxValue}
             />
         </div>
     );

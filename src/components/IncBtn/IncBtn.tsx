@@ -3,7 +3,8 @@ import './IncBtn.css';
 
 type IncBtnPropsType = {
     addValue: () => void
-    onDisplay: number
+    count: number
+    maxValue: number
 }
 
 export const IncBtn: React.FC<IncBtnPropsType> = (props) => {
@@ -14,7 +15,7 @@ export const IncBtn: React.FC<IncBtnPropsType> = (props) => {
             <span>
                 <button
                     className={'IncBtn'}
-                    disabled={props.onDisplay === 5}
+                    disabled={props.count === props.maxValue}
                     onClick={onClickHandler}
                 >Inc</button>
             </span>
