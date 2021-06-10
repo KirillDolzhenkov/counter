@@ -7,6 +7,7 @@ type SettingsPropsType = {
     addMaxValue: (value: number) => void
     startValue: number
     maxValue: number
+    changeEditMode: (value: boolean) => void
 }
 
 export const Settings: React.FC<SettingsPropsType> = (props) => {
@@ -15,11 +16,13 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
    const [startInputValue, setStartInputValue] = useState<number>(0)*/
 
     const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
-        props.addStartValue(parseInt(e.currentTarget.value))
+        props.addStartValue(parseInt(e.currentTarget.value));
+        props.changeEditMode(true);
     }
 
     const maxValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
-        props.addMaxValue(parseInt(e.currentTarget.value))
+        props.addMaxValue(parseInt(e.currentTarget.value));
+        props.changeEditMode(true);
     }
     return (
         <div className={"SettingsBody"}>
@@ -49,7 +52,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     addMaxValue={props.addMaxValue}
                     startValue={props.startValue}
                     maxValue={props.maxValue}
-
+                    changeEditMode={props.changeEditMode}
                 />
             </div>
         </div>

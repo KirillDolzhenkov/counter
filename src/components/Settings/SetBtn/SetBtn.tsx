@@ -6,10 +6,14 @@ type SetBtnPropsType = {
     addMaxValue: (value: number) => void
     startValue: number
     maxValue: number
+    changeEditMode: (value: boolean)=> void
 }
 
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
-    const onclickHandler =()=> {props.addStartValue(props.startValue)}
+    const onclickHandler =()=> {
+        props.addStartValue(props.startValue);
+        props.changeEditMode(false)
+    }
     return(
         <div>
             <button

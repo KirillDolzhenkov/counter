@@ -9,12 +9,11 @@ function App() {
     /*const [startValue, setStartValue] = useState<number>(0)*/
 
 
-    const [maxValue, setMaxValue] = useState<number>(0)
-    const [startValue, setStartValue] = useState<number>(0)
+    const [maxValue, setMaxValue] = useState<number>(0);
+    const [startValue, setStartValue] = useState<number>(0);
+    const [count, setCount] = useState<number>(0);
 
-
-    const [count, setCount] = useState<number>(0)
-
+    const [editMode, setEditMode] = useState<boolean>(false);
 
 
 
@@ -28,12 +27,15 @@ function App() {
     }
 
     const addMaxValue = (value: number) => {
-        setMaxValue(value)
+        setMaxValue(value);
     }
 
     const addStartValue = (value: number) => {
-        setStartValue(value)
-        setCount(startValue)
+        setStartValue(value);
+        setCount(startValue);
+    }
+    const changeEditMode = (value: boolean) => {
+        setEditMode(value);
     }
 
 
@@ -44,6 +46,7 @@ function App() {
                 addMaxValue={addMaxValue}
                 startValue={startValue}
                 maxValue={maxValue}
+                changeEditMode={changeEditMode}
             />
 
             <Counter
@@ -51,6 +54,7 @@ function App() {
                 addValue={addValue}
                 resetValue={resetValue}
                 maxValue={maxValue}
+                editMode={editMode}
             />
         </div>
     );

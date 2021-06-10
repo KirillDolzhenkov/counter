@@ -4,6 +4,7 @@ import './Display.css'
 type DisplayPropsType = {
     count: number
     maxValue: number
+    editMode: boolean
 }
 
 export const Display: React.FC<DisplayPropsType> = (props) => {
@@ -12,7 +13,7 @@ export const Display: React.FC<DisplayPropsType> = (props) => {
         <div>
             <h2>
                 <input
-                    value={props.count}
+                    value={props.editMode? 'press "Set"' : props.count}
                     className={classNameValue}
                 />
             </h2>

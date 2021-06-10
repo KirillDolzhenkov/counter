@@ -9,6 +9,7 @@ type CounterPropsType = {
     resetValue: () => void
     count: number
     maxValue: number
+    editMode: boolean
 
 }
 
@@ -19,6 +20,7 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
                 <Display
                     maxValue={props.maxValue}
                     count={props.count}
+                    editMode={props.editMode}
                 />
             </div>
             <div className={'BtnArea'}>
