@@ -13,7 +13,7 @@ export const Display: React.FC<DisplayPropsType> = (props) => {
         <div>
             <h2>
                 <input
-                    value={props.editMode? 'press "Set"' : props.count}
+                    value={props.editMode? 'press "Set" button' : props.count}
                     className={classNameValue}
                 />
             </h2>

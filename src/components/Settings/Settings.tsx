@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 import "./Settings.css"
 import {SetBtn} from "./SetBtn/SetBtn";
 
@@ -11,9 +11,6 @@ type SettingsPropsType = {
 }
 
 export const Settings: React.FC<SettingsPropsType> = (props) => {
-
-    /*   const [maxInputValue, setMaxInputValue] = useState<number>(0)
-   const [startInputValue, setStartInputValue] = useState<number>(0)*/
 
     const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
         props.addStartValue(parseInt(e.currentTarget.value));

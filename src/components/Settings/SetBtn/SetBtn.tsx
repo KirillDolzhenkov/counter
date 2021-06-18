@@ -12,7 +12,7 @@ type SetBtnPropsType = {
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
     const onclickHandler =()=> {
         props.addStartValue(props.startValue);
-        props.changeEditMode(false)
+        props.changeEditMode(false);
     }
     return(
         <div>

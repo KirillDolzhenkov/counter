@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter/Counter";
 import {Settings} from "./components/Settings/Settings";
@@ -6,30 +6,46 @@ import {Settings} from "./components/Settings/Settings";
 
 
 function App() {
-    /*const [startValue, setStartValue] = useState<number>(0)*/
 
-
+    //settings:
     const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
+
+    //display:
     const [count, setCount] = useState<number>(0);
 
+    //editMode:
     const [editMode, setEditMode] = useState<boolean>(false);
 
 
+    //localStorage:
+    /*const [localStValue, setLocalStValue] = useState(null)*/
 
+    useEffect(()=>{
+        setLocalStorageValue();
+    },[startValue])
 
+    const setLocalStorageValue = () => {
+        localStorage.setItem("counterValue", JSON.stringify(startValue));
+    }
+
+/*    const getLocalStorageValue = () => {
+        let storageValue = localStorage.getItem("counterValue");
+        if(storageValue){
+            setLocalStValue(JSON.parse(storageValue));
+        }
+    }*/
+
+    //callBacks:
     const addValue = () => {
         setCount(count + 1);
     }
-
     const resetValue = () => {
         setCount(startValue);
     }
-
     const addMaxValue = (value: number) => {
         setMaxValue(value);
     }
-
     const addStartValue = (value: number) => {
         setStartValue(value);
         setCount(startValue);
@@ -37,7 +53,6 @@ function App() {
     const changeEditMode = (value: boolean) => {
         setEditMode(value);
     }
-
 
     return (
         <div className="App">
