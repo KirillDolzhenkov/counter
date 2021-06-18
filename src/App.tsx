@@ -19,15 +19,14 @@ function App() {
 
 
     //localStorage:
-    /*const [localStValue, setLocalStValue] = useState(null)*/
 
-    useEffect(()=>{
-        setLocalStorageValue();
-    },[startValue])
+ /*   useEffect(() => {
+        setStartStorageValue();
+    },[startValue]);
 
-    const setLocalStorageValue = () => {
+    const setStartStorageValue = () => {
         localStorage.setItem("counterValue", JSON.stringify(startValue));
-    }
+    }*/
 
 /*    const getLocalStorageValue = () => {
         let storageValue = localStorage.getItem("counterValue");
