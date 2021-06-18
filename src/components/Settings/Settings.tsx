@@ -27,17 +27,19 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
         props.changeEditMode(true);
     }
 
-    const addLocalStartValue = (value: any) => {
-        setLocalStartValue(value);
+    const addLocalStorageValues = (startValue: number, maxValue: number) => {
+        setLocalStartValue(startValue);
+        setLocalMaxValue(maxValue);
     }
 
     //localStorage:
     useEffect(() => {
-        setStartStorageValue();
+        setStorageValues();
     },[localStartValue]);
 
-    const setStartStorageValue = () => {
-        localStorage.setItem("counterValue", JSON.stringify(localStartValue));
+    const setStorageValues = () => {
+        localStorage.setItem("counterMaxValue", JSON.stringify(localMaxValue));
+        localStorage.setItem("counterStartValue", JSON.stringify(localStartValue));
     }
 
 
@@ -70,7 +72,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     startValue={props.startValue}
                     maxValue={props.maxValue}
                     changeEditMode={props.changeEditMode}
-                    addLocalStartValue={addLocalStartValue}
+                    addLocalStorageValues={addLocalStorageValues}
                 />
             </div>
         </div>
