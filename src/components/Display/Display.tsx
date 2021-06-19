@@ -8,12 +8,16 @@ type DisplayPropsType = {
 }
 
 export const Display: React.FC<DisplayPropsType> = (props) => {
-    const classNameValue = props.count === props.maxValue ? 'redValue' : 'baseValue';
+
+    const classNamePropsValue = props.count === props.maxValue ? `baseValue redValue` : 'baseValue';
+    const inputValue = props.editMode? `please enter values and press "Set" button` : props.count;
+    const classNameValue = props.editMode? `baseValue information` : classNamePropsValue;
+
     return(
         <div>
             <h2>
                 <input
-                    value={props.editMode? 'press "Set" button' : props.count}
+                    value={inputValue}
                     className={classNameValue}
                 />
             </h2>

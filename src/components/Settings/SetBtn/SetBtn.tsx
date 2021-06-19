@@ -6,23 +6,24 @@ type SetBtnPropsType = {
     addMaxValue: (value: number) => void
     startValue: number
     maxValue: number
-    changeEditMode: (value: boolean)=> void
+    changeEditMode: (value: boolean) => void
     addLocalStorageValues: (startValue: number, maxValue: number) => void
 }
 
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
-    const onclickHandler =()=> {
+    const onclickHandler = () => {
         props.addStartValue(props.startValue);
         props.addLocalStorageValues(props.startValue, props.maxValue); // <-- addLocalStorageValues
         props.changeEditMode(false);
 
     }
-    return(
+    return (
         <div>
             <button
                 className={"SetBtn"}
                 onClick={onclickHandler}
-            >Set</button>
+            >Set
+            </button>
         </div>
     )
 }

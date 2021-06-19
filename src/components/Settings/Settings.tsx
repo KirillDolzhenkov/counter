@@ -8,13 +8,14 @@ type SettingsPropsType = {
     startValue: number
     maxValue: number
     changeEditMode: (value: boolean) => void
+    error: boolean
 }
 
 export const Settings: React.FC<SettingsPropsType> = (props) => {
 
     //localSettings:
-    const [localMaxValue, setLocalMaxValue] = useState<number>(0);
-    const [localStartValue, setLocalStartValue] = useState<number>(0);
+    const [localMaxValue, setLocalMaxValue] = useState<number>(props.maxValue);
+    const [localStartValue, setLocalStartValue] = useState<number>(props.startValue);
 
     //callBacks:
     const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
@@ -42,6 +43,10 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
         localStorage.setItem("counterStartValue", JSON.stringify(localStartValue));
     }
 
+    /*let inputClass = props.error ? 'errorInput' : 'SetInput';*/
+    let inputClass = props.error ?  `SetInput error` : 'SetInput';
+
+
 
     return (
         <div className={"SettingsBody"}>
@@ -50,7 +55,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     <span>max value: </span>
                     <input
                         type={"number"}
-                        className={'SetInput'}
+                        className={inputClass}
                         value={props.maxValue}
                         onChange={maxValueHandler}
                     />
@@ -59,7 +64,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     <span>start value: </span>
                     <span><input
                         type={"number"}
-                        className={'SetInput'}
+                        className={inputClass}
                         value={props.startValue}
                         onChange={startValueHandler}
                     /></span>
