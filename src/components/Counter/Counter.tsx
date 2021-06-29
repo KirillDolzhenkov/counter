@@ -1,8 +1,8 @@
 import React from "react";
 import './Counter.css'
-import {Display} from "../Display/Display";
-import {IncBtn} from "../IncBtn/IncBtn";
-import {ResetBtn} from "../ResetBtn/ResetBtn";
+import {Display} from "./Display/Display";
+import {IncBtn} from "./IncBtn/IncBtn";
+import {ResetBtn} from "./ResetBtn/ResetBtn";
 
 type CounterPropsType = {
     addValue: () => void

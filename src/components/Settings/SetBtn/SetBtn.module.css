@@ -16,8 +16,6 @@
 .SetBtn:active {
     border: 2px solid #00AAFF;
     background-color:  #282c34;
-    /*background-color: #28c9b2;*/
-    /*box-shadow: 1px 1px 5px grey;*/
     font-weight:bold;
     color: #00AAFF;
 }

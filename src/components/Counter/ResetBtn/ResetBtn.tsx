@@ -1,9 +1,9 @@
 import React from "react";
-import './Reset.css';
+import styles from './Reset.module.css';
 
 type ResetBtnPropsType = {
     resetValue: () => void
-    onDisplay: number
+    count: number
 }
 
 export const ResetBtn: React.FC<ResetBtnPropsType> = (props) => {
@@ -13,8 +13,8 @@ export const ResetBtn: React.FC<ResetBtnPropsType> = (props) => {
         <>
             <span>
                 <button
-                    className={'ResetBtn'}
-                    disabled={props.onDisplay === 0}
+                    className={styles.ResetBtn}
+                    disabled={props.count === 0}
                     onClick={onClickHandler}
                 >Reset</button>
             </span>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./SetBtn.css"
+import styles from "./SetBtn.module.css"
 
 type SetBtnPropsType = {
     addStartValue: (value: number) => void
@@ -20,7 +20,7 @@ export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
     return (
         <div>
             <button
-                className={"SetBtn"}
+                className={styles.SetBtn}
                 onClick={onclickHandler}
             >Set
             </button>
