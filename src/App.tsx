@@ -68,6 +68,7 @@ function App() {
                 addValue={addValue}
                 resetValue={resetValue}
                 maxValue={maxValue}
+                startValue={startValue}
                 editMode={editMode}
             />
         </div>

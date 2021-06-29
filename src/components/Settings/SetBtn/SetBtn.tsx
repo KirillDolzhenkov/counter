@@ -8,6 +8,7 @@ type SetBtnPropsType = {
     maxValue: number
     changeEditMode: (value: boolean) => void
     addLocalStorageValues: (startValue: number, maxValue: number) => void
+    error: boolean
 }
 
 export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
@@ -17,10 +18,12 @@ export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
         props.changeEditMode(false);
 
     }
+    const styleBtnValue = props.error ? styles.disable : styles.SetBtn
     return (
         <div>
             <button
-                className={styles.SetBtn}
+                className={styleBtnValue}
+                disabled={props.error}
                 onClick={onclickHandler}
             >Set
             </button>

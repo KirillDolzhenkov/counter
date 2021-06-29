@@ -9,8 +9,8 @@ type CounterPropsType = {
     resetValue: () => void
     count: number
     maxValue: number
+    startValue: number
     editMode: boolean
-
 }
 
 export const Counter: React.FC<CounterPropsType> = (props) => {
@@ -28,10 +28,13 @@ export const Counter: React.FC<CounterPropsType> = (props) => {
                     addValue={props.addValue}
                     count={props.count}
                     maxValue={props.maxValue}
+                    editMode={props.editMode}
                 />
                 <ResetBtn
                     resetValue={props.resetValue}
                     count={props.count}
+                    startValue={props.startValue}
+                    editMode={props.editMode}
                 />
             </div>
         </div>

@@ -78,6 +78,7 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
                     maxValue={props.maxValue}
                     changeEditMode={props.changeEditMode}
                     addLocalStorageValues={addLocalStorageValues}
+                    error={props.error}
                 />
             </div>
         </div>

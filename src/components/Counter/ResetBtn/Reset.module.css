@@ -27,6 +27,7 @@
     color: #00AAFF;
 }
 
+/*need to fix: */
 .disable {
     grid-area: r;
     font-size: 20px;
