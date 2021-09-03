@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SetBtn.module.css"
 
+//types:
 type SetBtnPropsType = {
     addStartValue: (value: number) => void
     addMaxValue: (value: number) => void
@@ -11,7 +12,8 @@ type SetBtnPropsType = {
     error: boolean
 }
 
-export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
+//functional component:
+const SetBtn: React.FC<SetBtnPropsType> = (props) => {
     const onclickHandler = () => {
         props.addStartValue(props.startValue);
         props.addLocalStorageValues(props.startValue, props.maxValue); // <-- addLocalStorageValues
@@ -29,4 +31,8 @@ export const SetBtn: React.FC<SetBtnPropsType> = (props) => {
             </button>
         </div>
     )
+}
+
+export {
+    SetBtn
 }

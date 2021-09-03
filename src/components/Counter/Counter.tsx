@@ -4,6 +4,7 @@ import {Display} from "./Display/Display";
 import {IncBtn} from "./IncBtn/IncBtn";
 import {ResetBtn} from "./ResetBtn/ResetBtn";
 
+//types:
 type CounterPropsType = {
     addValue: () => void
     resetValue: () => void
@@ -13,6 +14,7 @@ type CounterPropsType = {
     editMode: boolean
 }
 
+//functional component:
 export const Counter: React.FC<CounterPropsType> = (props) => {
     return (
         <div className={'CounterBody'}>

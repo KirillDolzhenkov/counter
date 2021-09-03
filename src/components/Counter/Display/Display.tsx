@@ -1,13 +1,15 @@
 import React from "react";
 import './Display.css'
 
+//types:
 type DisplayPropsType = {
     count: number
     maxValue: number
     editMode: boolean
 }
 
-export const Display: React.FC<DisplayPropsType> = (props) => {
+//functional component:
+const Display: React.FC<DisplayPropsType> = (props) => {
 
     const classNamePropsValue = props.count === props.maxValue ? `baseValue redValue` : 'baseValue';
     const inputValue = props.editMode? `please enter values and press "Set" button` : props.count;
@@ -23,4 +25,8 @@ export const Display: React.FC<DisplayPropsType> = (props) => {
             </h2>
         </div>
     )
+}
+
+export {
+    Display
 }

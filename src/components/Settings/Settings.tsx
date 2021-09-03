@@ -2,6 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import "./Settings.css"
 import {SetBtn} from "./SetBtn/SetBtn";
 
+//types:
 type SettingsPropsType = {
     addStartValue: (value: number) => void
     addMaxValue: (value: number) => void
@@ -11,7 +12,8 @@ type SettingsPropsType = {
     error: boolean
 }
 
-export const Settings: React.FC<SettingsPropsType> = (props) => {
+//functional component:
+const Settings: React.FC<SettingsPropsType> = (props) => {
 
     //localSettings:
     const [localMaxValue, setLocalMaxValue] = useState<number>(props.maxValue);
@@ -83,4 +85,8 @@ export const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
         </div>
     )
+}
+
+export {
+    Settings
 }
