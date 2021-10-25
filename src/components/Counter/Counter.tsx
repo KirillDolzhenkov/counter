@@ -1,5 +1,5 @@
 import React from "react";
-import './Counter.css'
+import style from './Counter.module.css'
 import {Display} from "./Display/Display";
 import {IncBtn} from "./IncBtn/IncBtn";
 import {ResetBtn} from "./ResetBtn/ResetBtn";
@@ -17,15 +17,15 @@ type CounterPropsType = {
 //functional component:
 export const Counter: React.FC<CounterPropsType> = (props) => {
     return (
-        <div className={'CounterBody'}>
-            <div className={'Display'}>
+        <div className={style.CounterBody}>
+            <div className={style.Display}>
                 <Display
                     maxValue={props.maxValue}
                     count={props.count}
                     editMode={props.editMode}
                 />
             </div>
-            <div className={'BtnArea'}>
+            <div className={style.BtnArea}>
                 <IncBtn
                     addValue={props.addValue}
                     count={props.count}

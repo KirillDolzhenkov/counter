@@ -8,7 +8,7 @@ type SetBtnPropsType = {
     startValue: number
     maxValue: number
     changeEditMode: (value: boolean) => void
-    addLocalStorageValues: (startValue: number, maxValue: number) => void
+    /*addLocalStorageValues: (startValue: number, maxValue: number) => void*/
     error: boolean
 }
 
@@ -16,7 +16,7 @@ type SetBtnPropsType = {
 const SetBtn: React.FC<SetBtnPropsType> = (props) => {
     const onclickHandler = () => {
         props.addStartValue(props.startValue);
-        props.addLocalStorageValues(props.startValue, props.maxValue); // <-- addLocalStorageValues
+        /*props.addLocalStorageValues(props.startValue, props.maxValue);*/ // <-- addLocalStorageValues
         props.changeEditMode(false);
 
     }
@@ -27,8 +27,7 @@ const SetBtn: React.FC<SetBtnPropsType> = (props) => {
                 className={styleBtnValue}
                 disabled={props.error}
                 onClick={onclickHandler}
-            >Set
-            </button>
+            >Set</button>
         </div>
     )
 }

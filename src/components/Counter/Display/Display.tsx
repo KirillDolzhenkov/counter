@@ -1,5 +1,5 @@
 import React from "react";
-import './Display.css'
+import style from './Display.module.css'
 
 //types:
 type DisplayPropsType = {
@@ -11,9 +11,9 @@ type DisplayPropsType = {
 //functional component:
 const Display: React.FC<DisplayPropsType> = (props) => {
 
-    const classNamePropsValue = props.count === props.maxValue ? `baseValue redValue` : 'baseValue';
+    const classNamePropsValue = props.count === props.maxValue ? `${style.baseValue} ${style.redValue}` : `${style.baseValue}`;
     const inputValue = props.editMode? `please enter values and press "Set" button` : props.count;
-    const classNameValue = props.editMode? `baseValue information` : classNamePropsValue;
+    const classNameValue = props.editMode? `${style.baseValue} ${style.information}` : classNamePropsValue;
 
     return(
         <div>

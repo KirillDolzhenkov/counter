@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import style from './App.module.css';
 import {Counter} from "./components/Counter/Counter";
 import {Settings} from "./components/Settings/Settings";
 
@@ -51,7 +51,7 @@ const App: React.FC = () => {
 
 
     return (
-        <div className="App">
+        <div className={style.app}>
             <Settings
                 addStartValue={addStartValue}
                 addMaxValue={addMaxValue}

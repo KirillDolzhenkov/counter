@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './IncBtn.module.css';
+import style from './IncBtn.module.css';
 /*import styles from "../ResetBtn/Reset.module.css";*/
 
 //types:
@@ -14,7 +14,7 @@ type IncBtnPropsType = {
 const IncBtn: React.FC<IncBtnPropsType> = (props) => {
     const onClickHandler = () =>{props.addValue()}
     /*const styleBtnValue = props.onDisplay === 0 ? 'IncBtn' : 'DisabledIncBtnBtn'*/
-    const styleBtnValue = props.count === props.maxValue || props.editMode ? styles.disable : styles.IncBtn
+    const styleBtnValue = props.count === props.maxValue || props.editMode ? style.disable : style.IncBtn
     return (
         <>
             <span>
