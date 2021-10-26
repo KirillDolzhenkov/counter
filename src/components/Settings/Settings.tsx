@@ -15,10 +15,6 @@ type SettingsPropsType = {
 //functional component:
 const Settings: React.FC<SettingsPropsType> = (props) => {
 
-    //localSettings:
-    /*const [localMaxValue, setLocalMaxValue] = useState<number>(props.maxValue);
-    const [localStartValue, setLocalStartValue] = useState<number>(props.startValue);*/
-
     //callBacks:
     const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
         props.addStartValue(parseInt(e.currentTarget.value));
@@ -30,50 +26,29 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         props.changeEditMode(true);
     }
 
-    /*const addLocalStorageValues = (startValue: number, maxValue: number) => {
-        setLocalStartValue(startValue);
-        setLocalMaxValue(maxValue);
-    }*/
-
-    //localStorage:
-
-    /*useEffect(() => {
-        setStorageValues();
-    },[localStartValue]);
-
-    const setStorageValues = () => {
-        localStorage.setItem(`${style.counterMaxValue}`, JSON.stringify(localMaxValue));
-        localStorage.setItem(`${style.counterStartValue}`, JSON.stringify(localStartValue));
-    }*/
-
-    /*let inputClass = props.error ? 'errorInput' : 'SetInput';*/
-    let inputClass = props.error ?  `${style.SetInput} ${style.error}` : `${style.SetInput}`;
-
-
+    const inputClass = props.error ?  `${style.SetInput} ${style.error}` : `${style.SetInput}`
 
     return (
         <div className={style.SettingsBody}>
-            <div className={style.SettingsArea}>
-                <h2>
-                    <span>max value: </span>
-                    <span>
-                        <input
-                            type={'number'}
-                            className={inputClass}
-                            value={props.maxValue}
-                            onChange={maxValueHandler}
-                        />
-                    </span>
-                </h2>
-                <h2>
-                    <span>start value: </span>
-                    <span><input
+            <div className={style.displayArea}>
+                <div className={style.descriptionArea}>
+                    <div>max value:</div>
+                    <div>start value:</div>
+                </div>
+                <div className={style.SettingsArea}>
+                    <input
+                        type={'number'}
+                        className={inputClass}
+                        value={props.maxValue}
+                        onChange={maxValueHandler}
+                    />
+                    <input
                         type={'number'}
                         className={inputClass}
                         value={props.startValue}
                         onChange={startValueHandler}
-                    /></span>
-                </h2>
+                    />
+                </div>
             </div>
             <div className={style.SBtnArea}>
                 <SetBtn
@@ -82,7 +57,6 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
                     startValue={props.startValue}
                     maxValue={props.maxValue}
                     changeEditMode={props.changeEditMode}
-                   /* addLocalStorageValues={addLocalStorageValues}*/
                     error={props.error}
                 />
             </div>

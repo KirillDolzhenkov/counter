@@ -1,14 +1,16 @@
 .CounterBody{
     /*background: linear-gradient(to right, #00AAFF, #00FF6C);*/
+    display: flex;
+    flex-direction: column;
     background: #282c34;
     justify-content: center;
     align-items: center;
-    height: 25vh;
-    width: 60vh;
+    height: 250px;
+    width: 600px;
     padding: 20px;
     border-radius: 15px;
-    /*border: 2px solid #ff7f8c;*/
     border: 2px solid #00AAFF;
+
 }
 
 .Display{
@@ -17,11 +19,11 @@
     align-items: center;
 }
 
-.BtnArea {
-    display: grid;
-    margin: auto 0;
-    justify-content: center;
+.BtnArea{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: space-evenly;
     align-items: center;
-    grid-template-areas:
-    'i r';
 }
