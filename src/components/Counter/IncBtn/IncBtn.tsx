@@ -1,4 +1,5 @@
 import React from "react";
+
 import style from './IncBtn.module.css';
 
 //types:
@@ -18,15 +19,13 @@ const IncBtn: React.FC<IncBtnPropsType> = (props) => {
     const styleBtnValue = props.count === props.maxValue || props.editMode ? style.disable : style.IncBtn
 
     return (
-        <>
-            <span>
-                <button
-                    className={styleBtnValue}
-                    disabled={props.count === props.maxValue || props.editMode}
-                    onClick={onClickHandler}
-                >Inc</button>
-            </span>
-        </>
+        <div>
+            <button
+                className={styleBtnValue}
+                disabled={props.count === props.maxValue || props.editMode}
+                onClick={onClickHandler}
+            >Inc</button>
+        </div>
     )
 }
 
