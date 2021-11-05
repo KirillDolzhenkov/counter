@@ -1,4 +1,5 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent} from "react";
+
 import style from "./Settings.module.css"
 import {SetBtn} from "./SetBtn/SetBtn";
 
@@ -24,6 +25,12 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
     const maxValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
         props.addMaxValue(parseInt(e.currentTarget.value));
         props.changeEditMode(true);
+    }
+
+    const onClickHandler = () => {
+        props.addStartValue(props.startValue);
+        props.addMaxValue(props.maxValue); //need to fix () !!!
+        props.changeEditMode(false);
     }
 
     const inputClass = props.error ?  `${style.SetInput} ${style.error}` : `${style.SetInput}`
@@ -52,11 +59,14 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
             <div className={style.SBtnArea}>
                 <SetBtn
-                    addStartValue={props.addStartValue}
+                    testFn={onClickHandler}
+
+                    /*addStartValue={props.addStartValue}
                     addMaxValue={props.addMaxValue}
                     startValue={props.startValue}
                     maxValue={props.maxValue}
-                    changeEditMode={props.changeEditMode}
+                    changeEditMode={props.changeEditMode}*/
+
                     error={props.error}
                 />
             </div>

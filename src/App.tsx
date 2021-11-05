@@ -24,9 +24,11 @@ const App: React.FC = () => {
     const addValue = () => {
         setCount(count + 1);
     }
+
     const resetValue = () => {
         setCount(startValue);
     }
+
     const addMaxValue = (value: number) => {
         if (value <= startValue || value < 0) {
             setError(true);
@@ -36,6 +38,7 @@ const App: React.FC = () => {
         setMaxValue(value);
 
     }
+
     const addStartValue = (value: number) => {
         if (value >= maxValue || value < 0) {
             setError(true)
@@ -45,6 +48,7 @@ const App: React.FC = () => {
         setStartValue(value);
         setCount(startValue);
     }
+
     const changeEditMode = (value: boolean) => {
         setEditMode(value);
     }

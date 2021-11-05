@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from './Reset.module.css';
+import style from './Reset.module.css';
 
 //types:
 type ResetBtnPropsType = {
@@ -17,7 +17,7 @@ const ResetBtn: React.FC<ResetBtnPropsType> = (props) => {
         props.resetValue();
     }
 
-    const styleBtnValue = props.count === props.startValue || props.editMode ? styles.disable : styles.ResetBtn
+    const styleBtnValue = props.count === props.startValue || props.editMode ? style.disable : style.ResetBtn
 
     return (
         <div>

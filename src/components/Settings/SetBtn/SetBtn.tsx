@@ -3,11 +3,13 @@ import styles from "./SetBtn.module.css"
 
 //types:
 type SetBtnPropsType = {
-    addStartValue: (value: number) => void
+    testFn: ()=>void
+
+    /*addStartValue: (value: number) => void
     addMaxValue: (value: number) => void
     startValue: number
-    maxValue: number
-    changeEditMode: (value: boolean) => void
+    maxValue: number*/
+    /*changeEditMode: (value: boolean) => void*/
     error: boolean
 }
 
@@ -15,10 +17,13 @@ type SetBtnPropsType = {
 const SetBtn: React.FC<SetBtnPropsType> = (props) => {
 
     const onclickHandler = () => {
-        props.addStartValue(props.startValue);
-        props.changeEditMode(false);
+     /*   props.addStartValue(props.startValue);
+        props.addMaxValue(props.maxValue);
+        props.changeEditMode(false);*/
 
+        props.testFn();
     }
+
     const styleBtnValue = props.error ? styles.disable : styles.SetBtn
 
     return (

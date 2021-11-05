@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from './ActionBtn.module.css';
+import style from './ActionBtn.module.css';
 
 //types:
 type ActionBtnPropsType = {
@@ -8,7 +8,9 @@ type ActionBtnPropsType = {
     count: number
     value: number
     editMode: boolean
+    title: string
 }
+
 
 //functional component:
 const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
@@ -17,7 +19,7 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
         props.actionFn();
     }
 
-    const styleBtnValue = props.count === props.value || props.editMode ? styles.disableActionBtn : styles.ActionBtn
+    const styleBtnValue = props.count === props.value || props.editMode ? style.disableActionBtn : style.enableActionBtn
 
     return (
         <div>
@@ -25,7 +27,7 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
                 className={styleBtnValue}
                 disabled={props.count === props.value || props.editMode}
                 onClick={onClickHandler}
-            >Reset
+            >{props.title}
             </button>
         </div>
     )

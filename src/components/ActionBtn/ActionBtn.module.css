@@ -1,4 +1,4 @@
-.ActionBtn {
+.enableActionBtn {
     border: 2px solid #00AAFF;
     grid-area: r;
     font-size: 20px;
@@ -13,7 +13,7 @@
     outline: 0;
 }
 
-.ActionBtn:active {
+.enableActionBtn:active {
     border: 2px solid #00AAFF;
     background-color:  #282c34;
     font-weight:bold;
