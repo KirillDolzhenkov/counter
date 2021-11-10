@@ -17,17 +17,15 @@ type SettingsPropsType = {
 const Settings: React.FC<SettingsPropsType> = (props) => {
 
     //callBacks:
-    const startValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
+    const onStartValueChange = (e: ChangeEvent<HTMLInputElement>)=>{
         props.addStartValue(parseInt(e.currentTarget.value));
         props.changeEditMode(true);
     }
-
-    const maxValueHandler = (e: ChangeEvent<HTMLInputElement>)=>{
+    const onMaxValueChange = (e: ChangeEvent<HTMLInputElement>)=>{
         props.addMaxValue(parseInt(e.currentTarget.value));
         props.changeEditMode(true);
     }
-
-    const onClickHandler = () => {
+    const setValues = () => {
         props.addStartValue(props.startValue);
         props.addMaxValue(props.maxValue); //need to fix () !!!
         props.changeEditMode(false);
@@ -47,19 +45,19 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
                         type={'number'}
                         className={inputClass}
                         value={props.maxValue}
-                        onChange={maxValueHandler}
+                        onChange={onMaxValueChange}
                     />
                     <input
                         type={'number'}
                         className={inputClass}
                         value={props.startValue}
-                        onChange={startValueHandler}
+                        onChange={onStartValueChange}
                     />
                 </div>
             </div>
             <div className={style.SBtnArea}>
                 <SetBtn
-                    testFn={onClickHandler}
+                    testFn={setValues}
 
                     /*addStartValue={props.addStartValue}
                     addMaxValue={props.addMaxValue}
