@@ -1,12 +1,19 @@
-import {AppAT} from "./store";
+
+//types:
+export type AppAT = ReturnType<typeof addValueAC>
+    | ReturnType<typeof resetValueAC>
+    | ReturnType<typeof setStartValuesAC>
 
 //app reducer:
 export const AppReducer = (state: any, action: AppAT) => {
     switch (action.type) {
-        case "firstAction":{
+        case "addValue":{
             return state;
         }
-        case "secondAction": {
+        case "resetValue": {
+            return state;
+        }
+        case "setStartValues": {
             return state;
         }
         default: return state;
@@ -14,9 +21,12 @@ export const AppReducer = (state: any, action: AppAT) => {
 }
 
 //action creators:
-export const firstAC = () => {
-    return {type: "firstAction"} as const
+export const addValueAC = () => {
+    return {type: "addValue"} as const
 }
-export const secondAC = () => {
-    return {type: "secondAction"} as const
+export const resetValueAC = () => {
+    return {type: "resetValue"} as const
+}
+export const setStartValuesAC = () => {
+    return {type: "setStartValues"} as const
 }

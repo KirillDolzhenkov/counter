@@ -3,7 +3,7 @@ import styles from "./SetBtn.module.css"
 
 //types:
 type SetBtnPropsType = {
-    testFn: ()=>void
+    testFn: () => void
     error: boolean
 
 
