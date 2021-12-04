@@ -1,6 +1,6 @@
 import React from "react";
 
-import style from './ActionBtn.module.css';
+import style from "./ActionBtn.module.css";
 
 //types:
 type ActionBtnPropsType = {
@@ -19,7 +19,9 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
         props.actionFn();
     }
 
-    const styleBtnValue = props.count === props.value || props.editMode ? style.disableActionBtn : style.enableActionBtn
+    const styleBtnValue = props.count === props.value || props.editMode
+        ? style.disableActionBtn
+        : style.enableActionBtn
 
     return (
         <div>

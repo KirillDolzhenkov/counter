@@ -2,7 +2,7 @@ import React from "react";
 
 import style from './Counter.module.css'
 import {Display} from "./Display/Display";
-import {ActionBtn} from "../ActionBtn/ActionBtn";
+import {ActionBtn} from "./ActionBtn/ActionBtn";
 
 //types:
 type CounterPropsType = {
