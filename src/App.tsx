@@ -1,11 +1,33 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import style from './App.module.css';
 import {Counter} from "./components/Counter/Counter";
 import {Settings} from "./components/Settings/Settings";
+import {addValueAC} from "./redux/appReducer";
+
 
 //functional component:
 const App: React.FC = () => {
+    const [countValue, setCountValue] = useState(0);
 
+    const addValue = () => {
+        setCountValue(countValue + 1);
+    }
+    const resetValue = () => {
+        setCountValue(0);
+    }
+
+    return (
+        <div className={style.app}>
+            <Counter
+                countValue={countValue}
+                addValue={addValue}
+                resetValue={resetValue}
+            />
+        </div>
+    )
+
+}
+/*
     //settings:
     const [maxValue, setMaxValue] = useState<number>(1);
     const [startValue, setStartValue] = useState<number>(0);
@@ -22,7 +44,8 @@ const App: React.FC = () => {
 
     //callBacks:
     const addValue = () => {
-        setCount(count + 1);
+        /!*setCount(count + 1);*!/
+        addValueAC()
     }
 
     const resetValue = () => {
@@ -36,7 +59,6 @@ const App: React.FC = () => {
             setError(false);
         }
         setMaxValue(value);
-
     }
 
     const addStartValue = (value: number) => {
@@ -75,7 +97,7 @@ const App: React.FC = () => {
             />
         </div>
     );
-}
+}*/
 
 export {
     App

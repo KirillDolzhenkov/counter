@@ -6,18 +6,60 @@ import {ActionBtn} from "./ActionBtn/ActionBtn";
 
 //types:
 type CounterPropsType = {
-    addValue: () => void
+   /* addValue: () => void
     resetValue: () => void
     count: number
     maxValue: number
     startValue: number
-    editMode: boolean
+    editMode: boolean*/
+
+    countValue: number
+    addValue: () => void
+    resetValue: () => void
+
 }
 
 //functional component:
 const Counter: React.FC<CounterPropsType> = (props) => {
+    const {
+        countValue,
+        addValue,
+        resetValue,
+    } = props;
 
-    const addValue = () => {
+
+    return (
+        <div className={style.CounterBody}>
+            <div className={style.Display}>
+                <Display
+                    countValue={countValue}
+                    maxCountValue={5}
+                />
+            </div>
+            <div className={style.BtnArea}>
+               <ActionBtn
+                   btnName={"Inc"}
+                   countValue={countValue}
+                   actionFn={addValue}
+                   maxCountValue={5}
+               />
+               <ActionBtn
+                   btnName={"Reset"}
+                   countValue={countValue}
+                   actionFn={resetValue}
+                   maxCountValue={0}
+               />
+            </div>
+        </div>
+    );
+}
+
+export {
+    Counter
+}
+
+
+    /*const addValue = () => {
         props.addValue();
     }
 
@@ -57,8 +99,5 @@ const Counter: React.FC<CounterPropsType> = (props) => {
             </div>
         </div>
     )
-}
+}*/
 
-export {
-    Counter
-}

@@ -1,4 +1,4 @@
-.baseValue {
+.regularValue {
     background-color: #282c34;
     border: 2px solid #00AAFF;
     height: 10vh;
@@ -11,7 +11,7 @@
     outline: 0;
 }
 
-.redValue {
+.maxValue {
     color: red;
 }
 
