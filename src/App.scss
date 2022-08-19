@@ -7,7 +7,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-/*  background-color: #e6e8ec;*/
+  background-color: rgb(40, 44, 52);
 }
 
 .App {
@@ -16,8 +16,51 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color:  #282c34;
 }
+
+button {
+  background: transparent;
+  border: 2px solid transparent;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 15px;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: all 0.05s ease-in-out;
+
+  &.Reset {
+    background-color: #e63946;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#e63946, 10%);
+    border: 1px solid darken(#e63946, 15%);
+  }
+
+  &.Inc {
+    background-color: #2a9d8f;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#2a9d8f, 10%);
+    border: 1px solid darken(#2a9d8f, 15%);
+  }
+
+  &.disable {
+    color: rgba(255, 255, 255, 0.38);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+}
+
+/*.overlay {
+  transition: all 0.5s ease-in-out;
+}*/
 
 .modal {
   background-color: #263648;
@@ -27,16 +70,16 @@ body {
   padding: 40px 30px;
   border-radius: 10px;
   position: absolute;
-  left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
 
-  img {
-    border-radius: 5px;
-    width: 100%;
-  }
+
+  color: rgba(0, 0, 0, 0.3);
+  min-width: 500px;
+  min-height: 300px;
+  margin: 0 auto;
+  font-size: 36px;
 
   svg {
     position: absolute;
@@ -51,9 +94,72 @@ body {
       opacity: 1;
     }
   }
+
+  /*.SettingsArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid red 2px;
+    height: 70%;*/
+
+  .settingsItems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: solid red 1px;*/
+
+    .changeValueBtn {
+      display: flex;
+      flex-direction: row;
+      /*border: solid 2px blue;*/
+    }
+  }
+
+    .SetInput {
+      background-color: rgba(40, 44, 52, 0.6);
+      color: #8c91b6;
+      height: 65px;
+      width: 60%;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 60px;
+      font-weight: bold;
+      outline: 0;
+    }
+
+    .SBtnArea {
+      display: flex;
+      margin-top: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+  //}
 }
 
-.CounterBody{
+.overlay.animated {
+  opacity: 0;
+  visibility: hidden;
+
+  .modal {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -30%);
+    transition-delay: 0.04s;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+
+    .modal {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.CounterBody {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,26 +170,24 @@ body {
   max-height: 300px;
   padding: 40px 30px;
   border-radius: 10px;
-  left: 50%;
-  top: 50%;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
-  .displayArea{
-    background-color: #282c34;
+  .displayArea {
+    background-color: rgba(40, 44, 52, 0.6);
     height: 10vh;
     width: 95%;
     border-radius: 10px;
     text-align: center;
     font-size: 60px;
-    font-weight:bold;
+    font-weight: bold;
     outline: 0;
 
     &.regularValue {
-      color: #00AAFF;
+      color: #8c91b6;
     }
 
     &.maxValue {
-      color: red;
+      color: #c41c3c;
     }
 
     &.information {
@@ -91,20 +195,17 @@ body {
     }
   }
 
-  .BtnArea{
+  .BtnArea {
     display: flex;
     flex-direction: row;
-    margin: 0 auto;
-    padding: 20px;
     justify-content: space-evenly;
     align-items: center;
-
-    /*border: 2px solid #00AAFF;*/
+    margin-top: 10px;
     height: 100px;
     width: 90%;
     border-radius: 10px;
 
-    button {
+    /*button {
       background: transparent;
       border: 2px solid transparent;
       text-align: center;
@@ -130,7 +231,8 @@ body {
       }
 
       &.disable {
-        color: rgba(255, 255, 255, 0.29);
+        color: rgba(255, 255, 255, 0.38);
+        opacity: 0.7;
       }
 
       &:hover {
@@ -141,7 +243,7 @@ body {
         transform: translateY(2px);
         box-shadow: none;
       }
-    }
+    }*/
   }
 }
 

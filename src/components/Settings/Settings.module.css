@@ -23,15 +23,15 @@
     border-radius: 10px;
 }
 
-.SettingsArea{
+/*.SettingsArea{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px;
     color: #00AAFF;
+}*/
 
-}
 .descriptionArea{
     display: flex;
     flex-direction: column;
