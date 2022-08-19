@@ -1,17 +1,17 @@
-import React from "react";
 
-import style from './Counter.module.css'
+import React from "react";
+/*
 import {Display} from "./Display/Display";
 import {ActionBtn} from "./ActionBtn/ActionBtn";
 
 //types:
 type CounterPropsType = {
-   /* addValue: () => void
+   /!* addValue: () => void
     resetValue: () => void
     count: number
     maxValue: number
     startValue: number
-    editMode: boolean*/
+    editMode: boolean*!/
 
     countValue: number
     addValue: () => void
@@ -30,6 +30,16 @@ const Counter: React.FC<CounterPropsType> = (props) => {
 
     return (
         <div className={style.CounterBody}>
+            <button className="open-modal-btn">&#9881; settings</button>
+            {/!* <div className="overlay">
+        <div className="modal">
+          <svg height="200" viewBox="0 0 200 200" width="200">
+            <title />
+            <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
+          </svg>
+          <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" />
+        </div>
+      </div> *!/}
             <div className={style.Display}>
                 <Display
                     countValue={countValue}
@@ -57,6 +67,7 @@ const Counter: React.FC<CounterPropsType> = (props) => {
 export {
     Counter
 }
+*/
 
 
     /*const addValue = () => {

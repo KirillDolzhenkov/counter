@@ -1,5 +1,5 @@
-.CounterBody{
-    /*background: linear-gradient(to right, #00AAFF, #00FF6C);*/
+/*.CounterBody{
+    !*background: linear-gradient(to right, #00AAFF, #00FF6C);*!
     display: flex;
     flex-direction: column;
     background: #282c34;
@@ -13,11 +13,11 @@
 
 }
 
-/*.Display{
+!*.Display{
     display: flex;
     justify-content: center;
     align-items: center;
-}*/
+}*!
 
 .BtnArea{
     display: flex;
@@ -31,4 +31,4 @@
     height: 100px;
     width: 90%;
     border-radius: 10px;
-}
+}*/

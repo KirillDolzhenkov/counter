@@ -1,13 +1,21 @@
-import React, {useReducer, useState} from 'react';
-import style from './App.module.css';
-import {Counter} from "./components/Counter/Counter";
-import {Settings} from "./components/Settings/Settings";
-import {addValueAC} from "./redux/appReducer";
+import React, {useState} from 'react';
+
+import "./App.scss"
+import {Display} from "./components/Counter/Display/Display";
+import {ActionBtn} from "./components/Counter/ActionBtn/ActionBtn";
 
 
 //functional component:
 const App: React.FC = () => {
     const [countValue, setCountValue] = useState(0);
+    const [openSettings, setOpenSettings] = useState(false);
+
+    const openWindow =() =>{
+        setOpenSettings(true);
+    }
+    const closeWindow =() =>{
+        setOpenSettings(false);
+    }
 
     const addValue = () => {
         setCountValue(countValue + 1);
@@ -16,17 +24,57 @@ const App: React.FC = () => {
         setCountValue(0);
     }
 
-    return (
-        <div className={style.app}>
-            <Counter
-                countValue={countValue}
-                addValue={addValue}
-                resetValue={resetValue}
-            />
-        </div>
-    )
 
+    return (
+        <div className="App">
+
+            {
+                openSettings
+                    ? <div className="overlay">
+                        <div className="modal">
+                            <svg onClick={closeWindow} height="200" viewBox="0 0 200 200" width="200">
+                                <title/>
+                                <path
+                                    d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"/>
+                            </svg>
+                            in progress...
+
+                        </div>
+                    </div>
+
+                    : <div className="CounterBody">
+                        <div className="Display">
+                            <Display
+                                countValue={countValue}
+                                maxCountValue={5}
+                            />
+                        </div>
+                        <div className={"BtnArea"}>
+                            <ActionBtn
+                                btnName={"Inc"}
+                                countValue={countValue}
+                                actionFn={addValue}
+                                maxCountValue={5}
+                            />
+                            <ActionBtn
+                                btnName={"Reset"}
+                                countValue={countValue}
+                                actionFn={resetValue}
+                                maxCountValue={0}
+                            />
+                            <button
+                                className="Inc"
+                                onClick={openWindow}
+                            >Settings</button>
+                        </div>
+                    </div>
+            }
+        </div>
+    );
 }
+
+
+
 /*
     //settings:
     const [maxValue, setMaxValue] = useState<number>(1);

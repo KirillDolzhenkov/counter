@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from './Display.module.css'
+import "../../../App.scss"
 
 //types:
 type DisplayPropsType = {
@@ -19,8 +19,8 @@ const Display: React.FC<DisplayPropsType> = (props) => {
     } = props;
 
     const inputClassName = countValue !== maxCountValue
-        ? `${styles.regularValue} `
-        : `${styles.regularValue} ${styles.maxValue}`;
+        ? `displayArea regularValue`
+        : `displayArea maxValue`;
 
     return (
         <>
