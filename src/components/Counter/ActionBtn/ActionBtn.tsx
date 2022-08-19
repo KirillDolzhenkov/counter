@@ -14,7 +14,7 @@ type ActionBtnPropsType = {
     btnName: string
     countValue: number
     actionFn: () => void
-    maxCountValue: number
+    borderValue: number
 }
 
 
@@ -24,13 +24,13 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
         btnName,
         countValue,
         actionFn,
-        maxCountValue,
+        borderValue,
     } = props;
 
     const onClickHandler = () => {
         actionFn();
     }
-    const btnClassName = countValue === maxCountValue
+    const btnClassName = countValue === borderValue
         ? `${btnName} disable`
         : `${btnName}`
 
@@ -39,7 +39,7 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
             <button
                 className={btnClassName}
                 onClick={onClickHandler}
-                disabled={countValue === maxCountValue}
+                disabled={countValue === borderValue}
             >{btnName}</button>
         </>
 
