@@ -8,13 +8,13 @@ import {Settings} from "./components/Settings/Settings";
 
 //functional component:
 const App: React.FC = () => {
+    //local state:
     const [startValue, setStartValue] = useState(0);
     const [maxValue, setMaxValue] = useState(1);
-
-
     const [countValue, setCountValue] = useState(startValue);
     const [openSettings, setOpenSettings] = useState(false);
 
+    //className for settings window:
     const settingsClasName = `overlay animated ${openSettings ? "show" : ""}`
 
     //open&close settings:
@@ -28,6 +28,7 @@ const App: React.FC = () => {
     //counter onClickHandlers:
     const addValue = () => {
         setCountValue(countValue + 1);
+        localStorage.setItem("counterValue", `${countValue + 1}`);
     }
     const resetValue = () => {
         setStartValue(startValue);

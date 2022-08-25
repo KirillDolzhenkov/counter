@@ -16,11 +16,12 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         closeWindow,
     } = props;
 
-    //state:
+    //local state:
     const [startValue, setStartValue] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<number>(1);
     const [error, setError] = useState<boolean>(false);
-    //classNames:
+
+    //classNames buttons & inputs:
     const displayClassName = !error ? "SetInput" : "SetInput error"
     const buttonClasName = !error ? "Inc" : "Inc disable";
 
@@ -41,7 +42,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         setMaxValue(maxValue - 1);
         checkMaxError(maxValue -1);
     }
-    //check errors:
+    //check errors Fn:
     const checkStartError = (value: number) => {
         if (value >= maxValue || value < 0) {
             setError(true);
@@ -114,7 +115,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
                     className={buttonClasName}
                     onClick={saveChanges}
                     disabled={error}
-                >Save
+                >save changes
                 </button>
             </div>
         </div>
