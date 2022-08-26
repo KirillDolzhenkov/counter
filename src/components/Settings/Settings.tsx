@@ -22,7 +22,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
     const [error, setError] = useState<boolean>(false);
 
     //classNames buttons & inputs:
-    const displayClassName = !error ? "SetInput" : "SetInput error"
+    const displayClassName = !error ? "settingsInput" : "settingsInput error"
     const buttonClasName = !error ? "Inc" : "Inc disable";
 
     //change value buttons:
@@ -78,7 +78,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
     }
 
     return (
-        <div className={"SettingsArea"}>
+        <div className={"settingsArea"}>
             <div>start value:</div>
             <div className={"settingsItems"}>
                 <>
@@ -104,18 +104,18 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
                         value={maxValue}
                     />
                 </>
-                <div className={"changeValueBtn"}>
+                <div className={"changeBtnBar"}>
                     <button className={"Reset"} onClick={removeMAxValue}>-</button>
                     <button className={"Inc"} onClick={addMaxValue}>+</button>
                 </div>
             </div>
-            <div className={"SaveBtnArea"}>
+            <div className={"saveBtnBar"}>
                 {/*<div style={{color: "#fff"}}> in progress...</div>*/}
                 <button
                     className={buttonClasName}
                     onClick={saveChanges}
                     disabled={error}
-                >save changes
+                >Save
                 </button>
             </div>
         </div>

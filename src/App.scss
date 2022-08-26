@@ -10,7 +10,7 @@ body {
   background-color: rgb(40, 44, 52);
 }
 
-.App {
+.app {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -101,14 +101,14 @@ button {
     justify-content: center;
     /*border: solid red 1px;*/
 
-    .changeValueBtn {
+    .changeBtnBar {
       display: flex;
       flex-direction: row;
       /*border: solid 2px blue;*/
     }
   }
 
-  .SetInput {
+  .settingsInput {
     background-color: rgba(40, 44, 52, 0.6);
     color: #8c91b6;
     height: 65px;
@@ -118,13 +118,14 @@ button {
     font-size: 60px;
     font-weight: bold;
     outline: 0;
+    /*border: solid 2px blue;*/
 
     &.error {
       color: #c41c3c;
     }
 
   }
-  .SaveBtnArea {
+  .saveBtnBar {
     display: flex;
     margin-top: 20px;
     align-items: center;
@@ -139,7 +140,7 @@ button {
   .modal {
     opacity: 0;
     visibility: hidden;
-    transform: translate(-50%, -30%);
+    /*transform: translate(-50%, -30%);*/
     transition-delay: 0.04s;
   }
 
@@ -155,7 +156,7 @@ button {
   }
 }
 
-.CounterBody {
+.counterBody {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,30 +169,36 @@ button {
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 
-  .displayArea {
-    background-color: rgba(40, 44, 52, 0.6);
-    height: 10vh;
-    width: 95%;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 60px;
-    font-weight: bold;
-    outline: 0;
+  .displayArea{
+    display: flex;
+    justify-content: center;
+    /*border: solid 2px blue;*/
+    height: 40%;
 
-    &.regularValue {
-      color: #8c91b6;
-    }
+    .display {
+      background-color: rgba(40, 44, 52, 0.6);
+      width: 95%;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 60px;
+      font-weight: bold;
+      outline: 0;
 
-    &.maxValue {
-      color: #c41c3c;
-    }
+      &.regularValue {
+        color: #8c91b6;
+      }
 
-    &.information {
-      font-size: 16px;
-    }
+      &.maxValue {
+        color: #c41c3c;
+      }
+
+      &.information {
+        font-size: 16px;
+      }
+  }
   }
 
-  .BtnArea {
+  .btnBar {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

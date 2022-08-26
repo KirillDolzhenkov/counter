@@ -28,11 +28,20 @@ const App: React.FC = () => {
     //counter onClickHandlers:
     const addValue = () => {
         setCountValue(countValue + 1);
-        localStorage.setItem("counterValue", `${countValue + 1}`);
+        localStorage.setItem("counterValue", JSON.stringify(countValue + 1));
     }
     const resetValue = () => {
         setStartValue(startValue);
         setCountValue(startValue);
+        localStorage.removeItem("counterValue");
+    }
+    const testGetValueFromLS = () => {
+        let valueAsString = localStorage.getItem("counterValue");
+        if (valueAsString){
+            let valueAsNumber = JSON.parse(valueAsString);
+            setStartValue(valueAsNumber);
+        }
+
     }
 
     //callBacks:
@@ -45,16 +54,16 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className="App">
+        <div className="app">
             {
-                !openSettings && <div className="CounterBody">
-                    <div className="Display">
+                !openSettings && <div className="counterBody">
+                    <div className="displayArea">
                         <Display
                             countValue={countValue}
                             maxCountValue={maxValue}
                         />
                     </div>
-                    <div className={"BtnArea"}>
+                    <div className={"btnBar"}>
                         <ActionBtn
                             btnName={"Inc"}
                             countValue={countValue}
@@ -72,13 +81,16 @@ const App: React.FC = () => {
                             onClick={openWindow}
                         >Settings
                         </button>
+                        {/*<button
+                            className="Inc"
+                            onClick={testGetValueFromLS}
+                        >testLS
+                        </button>*/}
                     </div>
                 </div>
             }
             <div className={settingsClasName}>
-
                 <div className="modal">
-
                     <svg onClick={closeWindow} height="200" viewBox="0 0 200 200" width="200">
                         <title/>
                         <path

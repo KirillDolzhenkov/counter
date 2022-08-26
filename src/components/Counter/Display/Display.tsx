@@ -19,8 +19,8 @@ const Display: React.FC<DisplayPropsType> = (props) => {
     } = props;
 
     const inputClassName = countValue !== maxCountValue
-        ? `displayArea regularValue`
-        : `displayArea maxValue`;
+        ? `display regularValue`
+        : `display maxValue`;
 
     return (
         <>

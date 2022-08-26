@@ -27,12 +27,17 @@ const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
         borderValue,
     } = props;
 
-    const onClickHandler = () => {
-        actionFn();
-    }
+    //classNames for buttons:
     const btnClassName = countValue === borderValue
         ? `${btnName} disable`
         : `${btnName}`
+
+
+    //onClickHandlers
+    const onClickHandler = () => {
+        actionFn();
+    }
+
 
     return (
         <>
