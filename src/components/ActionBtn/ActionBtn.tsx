@@ -1,7 +1,6 @@
 import React from "react";
 
-/*import styles from "./ActionBtn.module.css";*/
-import "../../../App.scss"
+import "../../style/Buttons.scss"
 
 //types:
 type ActionBtnPropsType = {

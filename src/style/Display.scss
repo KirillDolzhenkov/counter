@@ -1,0 +1,27 @@
+.displayArea {
+  display: flex;
+  justify-content: center;
+  height: 40%;
+
+  .display {
+    background-color: rgba(40, 44, 52, 0.6);
+    width: 95%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    outline: 0;
+
+    &.regularValue {
+      color: #8c91b6;
+    }
+
+    &.maxValue {
+      color: #c41c3c;
+    }
+
+    &.information {
+      font-size: 16px;
+    }
+  }
+}

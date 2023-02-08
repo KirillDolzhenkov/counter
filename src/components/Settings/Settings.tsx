@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
-import "../../App.scss"
+import "../../style/Settings.scss"
+import "../../style/Buttons.scss"
 
 //types:
 type SettingsPropsType = {
@@ -15,7 +16,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         changeMaxValue,
         closeWindow,
     } = props;
-
+    
     //local state:
     const [startValue, setStartValue] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<number>(1);

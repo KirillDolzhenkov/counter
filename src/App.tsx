@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-import "./App.scss"
-import {Display} from "./components/Counter/Display/Display";
-import {ActionBtn} from "./components/Counter/ActionBtn/ActionBtn";
+import "./style/Counter.scss"
+import {Display} from "./components/Display/Display";
+import {ActionBtn} from "./components/ActionBtn/ActionBtn";
 import {Settings} from "./components/Settings/Settings";
 
 
@@ -28,21 +28,20 @@ const App: React.FC = () => {
     //counter onClickHandlers:
     const addValue = () => {
         setCountValue(countValue + 1);
-        localStorage.setItem("counterValue", JSON.stringify(countValue + 1));
+        //localStorage.setItem("counterValue", JSON.stringify(countValue + 1));
     }
     const resetValue = () => {
         setStartValue(startValue);
         setCountValue(startValue);
-        localStorage.removeItem("counterValue");
+        //localStorage.removeItem("counterValue");
     }
-    const testGetValueFromLS = () => {
+   /* const testGetValueFromLS = () => {
         let valueAsString = localStorage.getItem("counterValue");
         if (valueAsString){
             let valueAsNumber = JSON.parse(valueAsString);
             setStartValue(valueAsNumber);
         }
-
-    }
+    }*/
 
     //callBacks:
     const changeStartValue = (newStartValue: number) => {
