@@ -35,13 +35,13 @@ const App: React.FC = () => {
         setCountValue(startValue);
         //localStorage.removeItem("counterValue");
     }
-   /* const testGetValueFromLS = () => {
+    const testGetValueFromLS = () => {
         let valueAsString = localStorage.getItem("counterValue");
         if (valueAsString){
             let valueAsNumber = JSON.parse(valueAsString);
             setStartValue(valueAsNumber);
         }
-    }*/
+    }
 
     //callBacks:
     const changeStartValue = (newStartValue: number) => {
