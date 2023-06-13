@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import "../../style/Settings.scss"
 import "../../style/Buttons.scss"
+import {ActionBtn} from "../ActionBtn/ActionBtn";
 
 //types:
 type SettingsPropsType = {
@@ -24,7 +25,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
 
     //classNames buttons & inputs:
     const displayClassName = !error ? "settingsInput" : "settingsInput error"
-    const buttonClasName = !error ? "Inc" : "Inc disable";
+    const saveButtonClass = !error ? "Inc" : "Inc disable";
 
     //change value buttons:
     const addStartValue = () => {
@@ -82,42 +83,54 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         <div className={"settingsArea"}>
             <div>start value:</div>
             <div className={"settingsItems"}>
-                <>
-                    <input
-                        type="none"
-                        className={displayClassName}
-                        onChange={onStartValueChange}
-                        value={startValue}
-                    />
-                </>
+                <input
+                    type="none"
+                    className={displayClassName}
+                    onChange={onStartValueChange}
+                    value={startValue}
+                />
                 <div className={"changeValueBtn"}>
-                    <button className={"Reset"} onClick={removeStartValue}>-</button>
-                    <button className={"Inc"} onClick={addStartValue}>+</button>
+                    <ActionBtn
+                        name={"-"}
+                        className={"Reset"}
+                        callback={removeStartValue}
+                    />
+                    <ActionBtn
+                        name={"+"}
+                        className={"Inc"}
+                        callback={addStartValue}
+                    />
                 </div>
             </div>
             <div>max value:</div>
             <div className={"settingsItems"}>
-                <>
-                    <input
-                        type="text"
-                        className={displayClassName}
-                        onChange={onMaxValueChange}
-                        value={maxValue}
-                    />
-                </>
+                <input
+                    type="text"
+                    className={displayClassName}
+                    onChange={onMaxValueChange}
+                    value={maxValue}
+                />
                 <div className={"changeBtnBar"}>
-                    <button className={"Reset"} onClick={removeMAxValue}>-</button>
-                    <button className={"Inc"} onClick={addMaxValue}>+</button>
+                    <ActionBtn
+                        name={"-"}
+                        className={"Reset"}
+                        callback={removeMAxValue}
+                    />
+                    <ActionBtn
+                        name={"+"}
+                        className={"Inc"}
+                        callback={addMaxValue}
+                    />
                 </div>
             </div>
             <div className={"saveBtnBar"}>
                 {/*<div style={{color: "#fff"}}> in progress...</div>*/}
-                <button
-                    className={buttonClasName}
-                    onClick={saveChanges}
-                    disabled={error}
-                >Save
-                </button>
+                <ActionBtn
+                    name={"Save"}
+                    className={saveButtonClass}
+                    callback={saveChanges}
+                    isDisable={error}
+                />
             </div>
         </div>
     );

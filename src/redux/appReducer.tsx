@@ -1,41 +1,45 @@
-
-//types:
-export type initialStateType = {
-    count: number
+export type initialTestStateType = {
+    startValue: number
+    maxValue: number
+    currentValue: number
 }
 
-export type AppAT = ReturnType<typeof addValueAC>
+export type AppActionType = ReturnType<typeof addValueAC>
     | ReturnType<typeof resetValueAC>
     | ReturnType<typeof setStartValuesAC>
+    | ReturnType<typeof setMaxValuesAC>
 
-const initialState: initialStateType = {count: 0};
+const initialTestState = {"startValue": 0, "maxValue": 1, "currentValue": 0}
 
 //app reducer:
-export const AppReducer = (state: initialStateType = initialState, action: AppAT) => {
+export const AppReducer = (state: initialTestStateType = initialTestState, action: AppActionType): initialTestStateType => {
     switch (action.type) {
-        case "addValue":{
-            const stateCopy = {...state};
-            return stateCopy.count + 1;
+        case "COUNTER/ADD_VALUE":{
+            return {...state, currentValue: state.currentValue + 1};
         }
-        case "resetValue": {
-            const stateCopy = {...state};
-            return stateCopy.count = 0;
+        case "COUNTER/RESET_VALUE": {
+            return {...state, currentValue: state.startValue};
         }
-        case "setStartValues": {
-            const stateCopy = {...state};
-            return stateCopy.count = action.value;
+        case "COUNTER/SET_START_VALUE": {
+            return {...state, startValue: action.payload.value};
+        }
+        case "COUNTER/SET_MAX_VALUE": {
+            return {...state, maxValue: action.payload.value};
         }
         default: return state;
     }
 }
 
-//action creators:
+//action creators
 export const addValueAC = () => {
-    return {type: "addValue"} as const
+    return {type: "COUNTER/ADD_VALUE"} as const
 }
 export const resetValueAC = () => {
-    return {type: "resetValue"} as const
+    return {type: "COUNTER/RESET_VALUE"} as const
 }
 export const setStartValuesAC = (value: number) => {
-    return {type: "setStartValues", value} as const
+    return {type: "COUNTER/SET_START_VALUE", payload:{value}} as const
+}
+export const setMaxValuesAC = (value: number) => {
+    return {type: "COUNTER/SET_MAX_VALUE", payload:{value}} as const
 }

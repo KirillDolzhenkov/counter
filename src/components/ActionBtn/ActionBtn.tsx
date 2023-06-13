@@ -2,75 +2,34 @@ import React from "react";
 
 import "../../style/Buttons.scss"
 
-//types:
 type ActionBtnPropsType = {
-    /*actionFn: () => void
-    count: number
-    value: number
-    editMode: boolean
-    title: string*/
-
-    btnName: string
-    countValue: number
-    actionFn: () => void
-    borderValue: number
+    name: string
+    className?: string
+    isDisable?: boolean
+    callback: () => void
 }
 
-
-//functional component:
-const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
+export const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
     const {
-        btnName,
-        countValue,
-        actionFn,
-        borderValue,
+        name,
+        className = "",
+        isDisable = false,
+        callback,
     } = props;
 
-    //classNames for buttons:
-    const btnClassName = countValue === borderValue
-        ? `${btnName} disable`
-        : `${btnName}`
+    //className
+    const btnClassName = isDisable ? `${className} disable` : `${className}`;
 
-
-    //onClickHandlers
+    //onClickHandler
     const onClickHandler = () => {
-        actionFn();
+        callback();
     }
 
-
     return (
-        <>
-            <button
-                className={btnClassName}
-                onClick={onClickHandler}
-                disabled={countValue === borderValue}
-            >{btnName}</button>
-        </>
-
-    )
-
-}
-
-export {
-    ActionBtn
-}
-/*
-
-const onClickHandler = () => {
-    props.actionFn();
-}
-
-const styleBtnValue = props.count === props.value || props.editMode
-    ? style.disableActionBtn
-    : style.enableActionBtn
-
-return (
-    <div>
         <button
-            className={styleBtnValue}
-            disabled={props.count === props.value || props.editMode}
+            className={btnClassName}
             onClick={onClickHandler}
-        >{props.title}
-        </button>
-    </div>
-)*/
+            disabled={isDisable}
+        >{name}</button>
+    )
+}

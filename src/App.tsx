@@ -1,23 +1,26 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 
 import "./style/Counter.scss"
 import {Display} from "./components/Display/Display";
 import {ActionBtn} from "./components/ActionBtn/ActionBtn";
 import {Settings} from "./components/Settings/Settings";
+import {addValueAC, AppReducer, resetValueAC, setMaxValuesAC, setStartValuesAC} from "./redux/appReducer";
 
 
-//functional component:
-const App: React.FC = () => {
-    //local state:
-    const [startValue, setStartValue] = useState(0);
-    const [maxValue, setMaxValue] = useState(1);
-    const [countValue, setCountValue] = useState(startValue);
+export const App: React.FC = () => {
+    //initialTestState
+    const initialTestState = {"startValue": 0, "maxValue": 1, "currentValue": 0}
+    const [currentTest, dispatchCurrentTest] = useReducer(AppReducer, initialTestState);
+
+    //local state
     const [openSettings, setOpenSettings] = useState(false);
 
-    //className for settings window:
-    const settingsClasName = `overlay animated ${openSettings ? "show" : ""}`
+    //classNames
+    const settingsClasName = `overlay animated ${openSettings ? "show" : ""}`;
+    const isIncDisable = currentTest.currentValue === currentTest.maxValue;
+    const isResetDisable = currentTest.currentValue === currentTest.startValue;
 
-    //open&close settings:
+    //open&close settings
     const openWindow = () => {
         setOpenSettings(true);
     }
@@ -25,31 +28,20 @@ const App: React.FC = () => {
         setOpenSettings(false);
     }
 
-    //counter onClickHandlers:
+    //counter onClickHandlers
     const addValue = () => {
-        setCountValue(countValue + 1);
-        //localStorage.setItem("counterValue", JSON.stringify(countValue + 1));
+        dispatchCurrentTest(addValueAC());
     }
     const resetValue = () => {
-        setStartValue(startValue);
-        setCountValue(startValue);
-        //localStorage.removeItem("counterValue");
+        dispatchCurrentTest(resetValueAC());
     }
-   /* const testGetValueFromLS = () => {
-        let valueAsString = localStorage.getItem("counterValue");
-        if (valueAsString){
-            let valueAsNumber = JSON.parse(valueAsString);
-            setStartValue(valueAsNumber);
-        }
-    }*/
 
-    //callBacks:
+    //callBacks
     const changeStartValue = (newStartValue: number) => {
-        setStartValue(newStartValue);
-        setCountValue(newStartValue);
+        dispatchCurrentTest(setStartValuesAC(newStartValue));
     }
     const changeMaxValue = (newMaxValue: number) => {
-        setMaxValue(newMaxValue);
+        dispatchCurrentTest(setMaxValuesAC(newMaxValue));
     }
 
     return (
@@ -58,33 +50,28 @@ const App: React.FC = () => {
                 !openSettings && <div className="counterBody">
                     <div className="displayArea">
                         <Display
-                            countValue={countValue}
-                            maxCountValue={maxValue}
+                            countValue={currentTest.currentValue}
+                            maxCountValue={currentTest.maxValue}
                         />
                     </div>
                     <div className={"btnBar"}>
                         <ActionBtn
-                            btnName={"Inc"}
-                            countValue={countValue}
-                            actionFn={addValue}
-                            borderValue={maxValue}
+                            name={"Inc"}
+                            className={"Inc"}
+                            callback={addValue}
+                            isDisable={isIncDisable}
                         />
                         <ActionBtn
-                            btnName={"Reset"}
-                            countValue={countValue}
-                            actionFn={resetValue}
-                            borderValue={startValue}
+                            name={"Reset"}
+                            className={"Reset"}
+                            callback={resetValue}
+                            isDisable={isResetDisable}
                         />
-                        <button
-                            className="Inc"
-                            onClick={openWindow}
-                        >Settings
-                        </button>
-                        {/*<button
-                            className="Inc"
-                            onClick={testGetValueFromLS}
-                        >testLS
-                        </button>*/}
+                        <ActionBtn
+                            name={"Settings"}
+                            className={"Inc"}
+                            callback={openWindow}
+                        />
                     </div>
                 </div>
             }
@@ -104,8 +91,4 @@ const App: React.FC = () => {
             </div>
         </div>
     );
-}
-
-export {
-    App
 }
