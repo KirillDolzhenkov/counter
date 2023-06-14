@@ -21,7 +21,7 @@ export const AppReducer = (state: initialTestStateType = initialTestState, actio
             return {...state, currentValue: state.startValue};
         }
         case "COUNTER/SET_START_VALUE": {
-            return {...state, startValue: action.payload.value};
+            return {...state, startValue: action.payload.value, currentValue: action.payload.value};
         }
         case "COUNTER/SET_MAX_VALUE": {
             return {...state, maxValue: action.payload.value};

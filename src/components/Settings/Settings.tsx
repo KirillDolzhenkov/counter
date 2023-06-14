@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import "../../style/Settings.scss"
 import "../../style/Buttons.scss"
 import {ActionBtn} from "../ActionBtn/ActionBtn";
+import {Display} from "../Display/Display";
 
 //types:
 type SettingsPropsType = {
@@ -23,11 +24,11 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
     const [maxValue, setMaxValue] = useState<number>(1);
     const [error, setError] = useState<boolean>(false);
 
-    //classNames buttons & inputs:
+    //styles
     const displayClassName = !error ? "settingsInput" : "settingsInput error"
     const saveButtonClass = !error ? "Inc" : "Inc disable";
 
-    //change value buttons:
+    //change value buttons
     const addStartValue = () => {
         setStartValue(startValue + 1);
         checkStartError(startValue + 1 );
@@ -44,7 +45,8 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         setMaxValue(maxValue - 1);
         checkMaxError(maxValue -1);
     }
-    //check errors Fn:
+
+    //check errors Fns
     const checkStartError = (value: number) => {
         if (value >= maxValue || value < 0) {
             setError(true);
@@ -60,19 +62,19 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         }
     }
 
-    //onChangeHandlers:
-    const onStartValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        let value = +e.currentTarget.value;
+    //onChangeHandlers
+    const onStartValueChange = (value: number) => {
+       /* const value = +e.currentTarget.value;*/
         checkStartError(value);
         setStartValue(value);
     }
-    const onMaxValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        let value = +e.currentTarget.value;
+    const onMaxValueChange = (value: number) => {
+        /*const value = +e.currentTarget.value;*/
         checkMaxError(value);
         setMaxValue(value);
     }
 
-    //change values callBack:
+    //change values callBack
     const saveChanges = () => {
         changeStartValue(startValue);
         changeMaxValue(maxValue);
@@ -83,11 +85,16 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         <div className={"settingsArea"}>
             <div>start value:</div>
             <div className={"settingsItems"}>
-                <input
+                {/*<input
                     type="none"
                     className={displayClassName}
                     onChange={onStartValueChange}
                     value={startValue}
+                />*/}
+                <Display
+                    value={startValue}
+                    className={displayClassName}
+                    callback={(value)=>onStartValueChange(value)}
                 />
                 <div className={"changeValueBtn"}>
                     <ActionBtn
@@ -104,11 +111,16 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
             <div>max value:</div>
             <div className={"settingsItems"}>
-                <input
+                {/*<input
                     type="text"
                     className={displayClassName}
                     onChange={onMaxValueChange}
                     value={maxValue}
+                />*/}
+                <Display
+                    value={maxValue}
+                    className={displayClassName}
+                    callback={onMaxValueChange}
                 />
                 <div className={"changeBtnBar"}>
                     <ActionBtn

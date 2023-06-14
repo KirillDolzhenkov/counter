@@ -4,32 +4,34 @@ import "../../style/Display.scss"
 
 //types:
 type DisplayPropsType = {
-    countValue: number
-    maxCountValue: number
+    value: number
+    className?: string
+    isError?: boolean
+    callback: (value: number) => void
 }
 
 //functional component:
-const Display: React.FC<DisplayPropsType> = (props) => {
+export const Display: React.FC<DisplayPropsType> = (props) => {
     const {
-        countValue,
-        maxCountValue,
+        value,
+        callback,
+        className = "",
+        isError = false,
     } = props;
 
-    const inputClassName = countValue !== maxCountValue
-        ? `display regularValue`
-        : `display maxValue`;
+    const onchangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = +e.currentTarget.value;
+        callback(value);
+    }
+
+    const displayClassName = isError ? `${className} error` : `${className}`;
 
     return (
-        <>
-            <input
-                type="text"
-                className={inputClassName}
-                value={countValue}
-            />
-        </>
+        <input
+            type="number"
+            className={displayClassName}
+            value={value}
+            onChange={onchangeHandler}
+        />
     );
-}
-
-export {
-    Display
 }

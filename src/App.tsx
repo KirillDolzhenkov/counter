@@ -8,17 +8,18 @@ import {addValueAC, AppReducer, resetValueAC, setMaxValuesAC, setStartValuesAC} 
 
 
 export const App: React.FC = () => {
-    //initialTestState
+    //initialState
     const initialTestState = {"startValue": 0, "maxValue": 1, "currentValue": 0}
-    const [currentTest, dispatchCurrentTest] = useReducer(AppReducer, initialTestState);
+    const [counter, dispatchCounter] = useReducer(AppReducer, initialTestState);
 
-    //local state
+    //localState
     const [openSettings, setOpenSettings] = useState(false);
 
-    //classNames
+    //styles
     const settingsClasName = `overlay animated ${openSettings ? "show" : ""}`;
-    const isIncDisable = currentTest.currentValue === currentTest.maxValue;
-    const isResetDisable = currentTest.currentValue === currentTest.startValue;
+    const isIncDisable = counter.currentValue >= counter.maxValue;
+    const isResetDisable = counter.currentValue === counter.startValue;
+    const isError = counter.currentValue >= counter.maxValue;
 
     //open&close settings
     const openWindow = () => {
@@ -28,20 +29,24 @@ export const App: React.FC = () => {
         setOpenSettings(false);
     }
 
-    //counter onClickHandlers
+    //counter fns
     const addValue = () => {
-        dispatchCurrentTest(addValueAC());
+        dispatchCounter(addValueAC());
     }
     const resetValue = () => {
-        dispatchCurrentTest(resetValueAC());
+        dispatchCounter(resetValueAC());
+    }
+    //onChangeHandlers
+    const onCurrentValueHandler = (value: number) => {
+        dispatchCounter(setStartValuesAC(value));
     }
 
-    //callBacks
+    //settings callbacks
     const changeStartValue = (newStartValue: number) => {
-        dispatchCurrentTest(setStartValuesAC(newStartValue));
+        dispatchCounter(setStartValuesAC(newStartValue));
     }
     const changeMaxValue = (newMaxValue: number) => {
-        dispatchCurrentTest(setMaxValuesAC(newMaxValue));
+        dispatchCounter(setMaxValuesAC(newMaxValue));
     }
 
     return (
@@ -50,8 +55,10 @@ export const App: React.FC = () => {
                 !openSettings && <div className="counterBody">
                     <div className="displayArea">
                         <Display
-                            countValue={currentTest.currentValue}
-                            maxCountValue={currentTest.maxValue}
+                            value={counter.currentValue}
+                            isError={isError}
+                            className={"display"}
+                            callback={onCurrentValueHandler} //!!!
                         />
                     </div>
                     <div className={"btnBar"}>
