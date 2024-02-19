@@ -1,101 +1,113 @@
 import React, {useReducer, useState} from 'react';
-
-import "./style/Counter.scss"
+import './App.css';
 import {Display} from "./components/Display/Display";
-import {ActionBtn} from "./components/ActionBtn/ActionBtn";
-import {Settings} from "./components/Settings/Settings";
-import {addValueAC, AppReducer, resetValueAC, setMaxValuesAC, setStartValuesAC} from "./redux/appReducer";
+import {ERROR} from "./constants/constants";
+import {ControlPanel} from "./components/ControlPanel/ControlPanel";
+import {addValueAC, AppReducer, resetValueAC} from "./reducers/AppReducer";
+
+export type InitialStateType = {
+    currentValue: number
+    minValue: number
+    maxValue: number
+}
+
+function App() {
+
+    /**Локальные состояния: */
+    const [initialState, dispatch] = useReducer(AppReducer,{
+        currentValue: 0,
+        minValue: 0,
+        maxValue: 5,
+    });
+
+    const [error, setError] = useState<string | null>("");
+    const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
 
 
-export const App: React.FC = () => {
-    //initialState
-    const initialTestState = {"startValue": 0, "maxValue": 1, "currentValue": 0}
-    const [counter, dispatchCounter] = useReducer(AppReducer, initialTestState);
-
-    //localState
-    const [openSettings, setOpenSettings] = useState(false);
-
-    //styles
-    const settingsClasName = `overlay animated ${openSettings ? "show" : ""}`;
-    const isIncDisable = counter.currentValue >= counter.maxValue;
-    const isResetDisable = counter.currentValue === counter.startValue;
-    const isError = counter.currentValue >= counter.maxValue;
-
-    //open&close settings
-    const openWindow = () => {
-        setOpenSettings(true);
+    /**Функции: */
+    const incValue = () => {
+        /*setInitialState({...initialState, currentValue: initialState.currentValue + 1});*/
+        dispatch(addValueAC())
     }
-    const closeWindow = () => {
-        setOpenSettings(false);
-    }
 
-    //counter fns
-    const addValue = () => {
-        dispatchCounter(addValueAC());
-    }
     const resetValue = () => {
-        dispatchCounter(resetValueAC());
-    }
-    //onChangeHandlers
-    const onCurrentValueHandler = (value: number) => {
-        dispatchCounter(setStartValuesAC(value));
+        /*setInitialState({...initialState, currentValue: initialState.minValue});*/
+        dispatch(resetValueAC());
     }
 
-    //settings callbacks
-    const changeStartValue = (newStartValue: number) => {
-        dispatchCounter(setStartValuesAC(newStartValue));
+    const checkError = () => {
+        const maxLimit = initialState.maxValue - 1;
+
+        if (initialState.currentValue >= maxLimit) {
+            /*setError(ERROR.MAX_LIMIT_ERROR);*/
+        }
     }
-    const changeMaxValue = (newMaxValue: number) => {
-        dispatchCounter(setMaxValuesAC(newMaxValue));
+
+    const changeWindow = (value: boolean) => {
+        setIsOpenSettings(value);
     }
 
     return (
-        <div className="app">
-            {
-                !openSettings && <div className="counterBody">
-                    <div className="displayArea">
-                        <Display
-                            value={counter.currentValue}
-                            isError={isError}
-                            className={"display"}
-                            callback={onCurrentValueHandler} //!!!
-                        />
-                    </div>
-                    <div className={"btnBar"}>
-                        <ActionBtn
-                            name={"Inc"}
-                            className={"Inc"}
-                            callback={addValue}
-                            isDisable={isIncDisable}
-                        />
-                        <ActionBtn
-                            name={"Reset"}
-                            className={"Reset"}
-                            callback={resetValue}
-                            isDisable={isResetDisable}
-                        />
-                        <ActionBtn
-                            name={"Settings"}
-                            className={"Inc"}
-                            callback={openWindow}
-                        />
-                    </div>
-                </div>
-            }
-            <div className={settingsClasName}>
-                <div className="modal">
-                    <svg onClick={closeWindow} height="200" viewBox="0 0 200 200" width="200">
-                        <title/>
-                        <path
-                            d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"/>
-                    </svg>
-                    <Settings
-                        changeStartValue={changeStartValue}
-                        changeMaxValue={changeMaxValue}
-                        closeWindow={closeWindow}
-                    />
-                </div>
+        <div className="App">
+
+            <div className="app-body">
+                {
+                    isOpenSettings
+                        ? <>
+                            <div className={'setField'}>
+
+                                <div className={'inputField'}>
+                                   <div style={{display: "flex", width: "100%"}}>
+                                       <div>
+                                           <span className={'setMax'}>maximum</span>
+                                           <input/>
+                                       </div>
+                                       <div>
+                                           <button>+</button>
+                                           <button>-</button>
+                                       </div>
+                                   </div>
+
+                                    <div style={{display: "flex", width: "100%"}}>
+                                        <div>
+                                            <span className={'setMin'}>minimum</span>
+                                            <input/>
+                                        </div>
+
+                                        <div>
+                                            <button>+</button>
+                                            <button>-</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="control-panel settings">
+                                    <button
+                                        className="button button-primary"
+                                        onClick={() => changeWindow(false)}
+                                    >save</button>
+                                </div>
+                            </div>
+                        </>
+                        : <div className="counter">
+                            <Display initialState={initialState} error={error}/>
+
+                            <ControlPanel
+                                initialState={initialState}
+                                incValue={incValue}
+                                resetValue={resetValue}
+                                checkError={checkError}
+                                /*setError={()=>{}}*/
+                                changeWindow={changeWindow}
+                            />
+
+                        </div>
+                }
+
             </div>
+
         </div>
     );
 }
+
+export default App;

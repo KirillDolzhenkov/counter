@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
-import "../../style/Settings.scss"
-import "../../style/Buttons.scss"
-import {ActionBtn} from "../ActionBtn/ActionBtn";
+import "../../styles/Settings.scss"
+import "../../styles/Buttons.scss"
+import {Button} from "../Button/Button";
 import {Display} from "../Display/Display";
 
 //types:
@@ -12,7 +12,7 @@ type SettingsPropsType = {
     closeWindow: () => void
 }
 
-const Settings: React.FC<SettingsPropsType> = (props) => {
+export const Settings: React.FC<SettingsPropsType> = (props) => {
     const {
         changeStartValue,
         changeMaxValue,
@@ -85,24 +85,19 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
         <div className={"settingsArea"}>
             <div>start value:</div>
             <div className={"settingsItems"}>
-                {/*<input
-                    type="none"
-                    className={displayClassName}
-                    onChange={onStartValueChange}
-                    value={startValue}
-                />*/}
                 <Display
+                    isEditable={true}
                     value={startValue}
                     className={displayClassName}
                     callback={(value)=>onStartValueChange(value)}
                 />
                 <div className={"changeValueBtn"}>
-                    <ActionBtn
+                    <Button
                         name={"-"}
                         className={"Reset"}
                         callback={removeStartValue}
                     />
-                    <ActionBtn
+                    <Button
                         name={"+"}
                         className={"Inc"}
                         callback={addStartValue}
@@ -111,24 +106,19 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
             <div>max value:</div>
             <div className={"settingsItems"}>
-                {/*<input
-                    type="text"
-                    className={displayClassName}
-                    onChange={onMaxValueChange}
-                    value={maxValue}
-                />*/}
                 <Display
+                    isEditable={true}
                     value={maxValue}
                     className={displayClassName}
                     callback={onMaxValueChange}
                 />
                 <div className={"changeBtnBar"}>
-                    <ActionBtn
+                    <Button
                         name={"-"}
                         className={"Reset"}
                         callback={removeMAxValue}
                     />
-                    <ActionBtn
+                    <Button
                         name={"+"}
                         className={"Inc"}
                         callback={addMaxValue}
@@ -137,7 +127,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
             <div className={"saveBtnBar"}>
                 {/*<div style={{color: "#fff"}}> in progress...</div>*/}
-                <ActionBtn
+                <Button
                     name={"Save"}
                     className={saveButtonClass}
                     callback={saveChanges}
@@ -146,8 +136,4 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
             </div>
         </div>
     );
-}
-
-export {
-    Settings
 }

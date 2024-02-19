@@ -1,6 +1,3 @@
-#### Technologies: React, Redux, Typescript
-### 🚀 [Try the app!](https://KirillDolzhenkov.github.io/counter)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

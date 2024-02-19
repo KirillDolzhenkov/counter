@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../style/Buttons.scss"
+/*import "../../styles/Buttons.scss"*/
 
 type ActionBtnPropsType = {
     name: string
@@ -9,7 +9,7 @@ type ActionBtnPropsType = {
     callback: () => void
 }
 
-export const ActionBtn: React.FC<ActionBtnPropsType> = (props) => {
+export const Button: React.FC<ActionBtnPropsType> = (props) => {
     const {
         name,
         className = "",

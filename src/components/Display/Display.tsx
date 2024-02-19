@@ -1,37 +1,18 @@
-import React from "react";
+import React from 'react';
+import {InitialStateType} from "../../App";
 
-import "../../style/Display.scss"
-
-//types:
-type DisplayPropsType = {
-    value: number
-    className?: string
-    isError?: boolean
-    callback: (value: number) => void
+type DisplayProps = {
+    initialState: InitialStateType
+    error: string | null
 }
 
-//functional component:
-export const Display: React.FC<DisplayPropsType> = (props) => {
-    const {
-        value,
-        callback,
-        className = "",
-        isError = false,
-    } = props;
+export const Display: React.FC<DisplayProps> = ({initialState,error}) => {
 
-    const onchangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = +e.currentTarget.value;
-        callback(value);
-    }
-
-    const displayClassName = isError ? `${className} error` : `${className}`;
+    const displayStyle = !!error ? "error" : "";
 
     return (
-        <input
-            type="number"
-            className={displayClassName}
-            value={value}
-            onChange={onchangeHandler}
-        />
+        <div className="display">
+            <p className={displayStyle}>{initialState.currentValue}</p>
+        </div>
     );
-}
+};
