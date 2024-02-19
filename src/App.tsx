@@ -1,9 +1,8 @@
 import React, {useReducer, useState} from 'react';
 import './App.css';
 import {Display} from "./components/Display/Display";
-import {ERROR} from "./constants/constants";
 import {ControlPanel} from "./components/ControlPanel/ControlPanel";
-import {addValueAC, AppReducer, resetValueAC} from "./reducers/AppReducer";
+import {addValueAC, CountReducer, resetValueAC} from "./reducers/CountReducer";
 
 export type InitialStateType = {
     currentValue: number
@@ -14,7 +13,7 @@ export type InitialStateType = {
 function App() {
 
     /**Локальные состояния: */
-    const [initialState, dispatch] = useReducer(AppReducer,{
+    const [initialState, dispatch] = useReducer(CountReducer,{
         currentValue: 0,
         minValue: 0,
         maxValue: 5,
@@ -23,24 +22,21 @@ function App() {
     const [error, setError] = useState<string | null>("");
     const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
 
-
     /**Функции: */
     const incValue = () => {
-        /*setInitialState({...initialState, currentValue: initialState.currentValue + 1});*/
         dispatch(addValueAC())
     }
 
     const resetValue = () => {
-        /*setInitialState({...initialState, currentValue: initialState.minValue});*/
         dispatch(resetValueAC());
     }
 
     const checkError = () => {
-        const maxLimit = initialState.maxValue - 1;
+        /*const maxLimit = initialState.maxValue - 1;
 
         if (initialState.currentValue >= maxLimit) {
-            /*setError(ERROR.MAX_LIMIT_ERROR);*/
-        }
+
+        }*/
     }
 
     const changeWindow = (value: boolean) => {
@@ -63,8 +59,8 @@ function App() {
                                            <input/>
                                        </div>
                                        <div>
-                                           <button>+</button>
-                                           <button>-</button>
+                                           <button className="button button-primary">+</button>
+                                           <button className="button button-primary">-</button>
                                        </div>
                                    </div>
 
@@ -75,8 +71,8 @@ function App() {
                                         </div>
 
                                         <div>
-                                            <button>+</button>
-                                            <button>-</button>
+                                            <button className="button button-primary">+</button>
+                                            <button className="button button-primary">-</button>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +101,6 @@ function App() {
                 }
 
             </div>
-
         </div>
     );
 }

@@ -5,6 +5,13 @@ export const ERROR = {
     UPPER_LIMIT_ERROR: "Over the upper limit threshold"
 }
 
-export const ACTION = {
-
-}
+export const ACTION_TYPE = {
+    COUNT: {
+        INC_VALUE: "COUNTER/COUNTER/INC_VALUE",
+        RESET_VALUE: "COUNTER/COUNTER/RESET_VALUE"
+    },
+    SETTINGS: {
+        SET_MIN_VALUE: "COUNTER/SETTINGS/SET_MIN_VALUE",
+        SET_MAX_VALUE: "COUNTER/SETTINGS/SET_MAX_VALUE"
+    }
+} as const
