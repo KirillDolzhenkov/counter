@@ -3,6 +3,7 @@ import './App.css';
 import {Display} from "./components/Display/Display";
 import {ControlPanel} from "./components/ControlPanel/ControlPanel";
 import {addValueAC, CountReducer, resetValueAC} from "./reducers/CountReducer";
+import {Settings} from "./components/Settings/Settings";
 
 export type InitialStateType = {
     currentValue: number
@@ -49,42 +50,8 @@ function App() {
             <div className="app-body">
                 {
                     isOpenSettings
-                        ? <>
-                            <div className={'setField'}>
+                        ? <Settings changeWindow={changeWindow}/>
 
-                                <div className={'inputField'}>
-                                   <div style={{display: "flex", width: "100%"}}>
-                                       <div>
-                                           <span className={'setMax'}>maximum</span>
-                                           <input/>
-                                       </div>
-                                       <div>
-                                           <button className="button button-primary">+</button>
-                                           <button className="button button-primary">-</button>
-                                       </div>
-                                   </div>
-
-                                    <div style={{display: "flex", width: "100%"}}>
-                                        <div>
-                                            <span className={'setMin'}>minimum</span>
-                                            <input/>
-                                        </div>
-
-                                        <div>
-                                            <button className="button button-primary">+</button>
-                                            <button className="button button-primary">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="control-panel settings">
-                                    <button
-                                        className="button button-primary"
-                                        onClick={() => changeWindow(false)}
-                                    >save</button>
-                                </div>
-                            </div>
-                        </>
                         : <div className="counter">
                             <Display initialState={initialState} error={error}/>
 
@@ -96,7 +63,6 @@ function App() {
                                 /*setError={()=>{}}*/
                                 changeWindow={changeWindow}
                             />
-
                         </div>
                 }
 

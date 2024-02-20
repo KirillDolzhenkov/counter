@@ -15,3 +15,8 @@ export const ACTION_TYPE = {
         SET_MAX_VALUE: "COUNTER/SETTINGS/SET_MAX_VALUE"
     }
 } as const
+
+export const APP_WINDOW = {
+    COUNT: "Counter",
+    SETTINGS: "Settings",
+}
