@@ -1,15 +1,15 @@
 import React from 'react';
 import {InitialStateType} from "../../App";
 import {ERROR} from "../../constants/constants";
+import {CounterStateType} from "../../reducers/CountReducer";
 
 type ControlPanelProps = {
-    initialState: InitialStateType
+    initialState: CounterStateType
     incValue: () => void
     resetValue: () => void
     checkError: () => void
-    changeWindow: (value: boolean) => void
+    changeWindow: () => void
     /*setError: (error: string) => void*/
-
 }
 
 export const ControlPanel: React.FC<ControlPanelProps> = (
@@ -23,9 +23,9 @@ export const ControlPanel: React.FC<ControlPanelProps> = (
     }
 ) => {
 
-    const isIncActive = initialState.currentValue >= initialState.maxValue;
-    const isResetActive = initialState.currentValue === initialState.minValue;
-    const isErrorActive = initialState.currentValue >= initialState.maxValue;
+    const isIncActive = false/*initialState.currentValue >= initialState.maxValue;*/
+    const isResetActive = false/*initialState.currentValue === initialState.minValue;*/
+    const isErrorActive = false/*initialState.currentValue >= initialState.maxValue;*/
 
     const incHandler = () => {
         checkError();
@@ -37,8 +37,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = (
         /*setError(ERROR.RESET_ERROR_VALUE);*/
     }
 
-    const openSettingsHandler = () => {
-        changeWindow(true);
+    const onOpenCounterHandler = () => {
+        changeWindow();
     }
 
 
@@ -56,7 +56,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = (
             >reset</button>
             <button
                 className="button button-primary"
-                onClick={() => openSettingsHandler()}
+                onClick={onOpenCounterHandler}
             >settings</button>
         </div>
     );

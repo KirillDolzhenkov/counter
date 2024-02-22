@@ -1,34 +1,35 @@
 import {ACTION_TYPE} from "../constants/constants";
 
-export type initialStateType = {
+export type CounterStateType = {
     currentValue: number
-    minValue: number
-    maxValue: number
 }
 
-type CountType = ReturnType<typeof addValueAC> | ReturnType<typeof resetValueAC>
+type CountType = ReturnType<typeof addCurrentValueAC> | ReturnType<typeof resetCurrentValueAC>
 
-/*const initialTestState: initialStateType = {
+const initialTestState: CounterStateType = {
     currentValue: 0,
-    minValue: 0,
-    maxValue: 5
-};*/
+};
 
-export const CountReducer = (state: initialStateType, action: CountType): initialStateType => {
+export const CountReducer = (state: CounterStateType = initialTestState, action: CountType): CounterStateType => {
     switch (action.type) {
-        case ACTION_TYPE.COUNT.INC_VALUE: {
+        case ACTION_TYPE.COUNT.INC_CURRENT_VALUE: {
             return {...state, currentValue: state.currentValue + 1};
         }
-        case ACTION_TYPE.COUNT.RESET_VALUE: {
-            return {...state, currentValue: state.minValue};
+        case ACTION_TYPE.COUNT.RESET_CURRENT_VALUE: {
+            return {...state, currentValue: action.payload.value};
         }
         default: return state;
     }
 }
 
-export const addValueAC = () => {
-    return {type: ACTION_TYPE.COUNT.INC_VALUE} as const
+export const addCurrentValueAC = () => {
+    return {type: ACTION_TYPE.COUNT.INC_CURRENT_VALUE} as const
 }
-export const resetValueAC = () => {
-    return {type: ACTION_TYPE.COUNT.RESET_VALUE} as const
+export const resetCurrentValueAC = (value: number) => {
+    return {
+        type: ACTION_TYPE.COUNT.RESET_CURRENT_VALUE,
+        payload: {
+            value
+        }
+    } as const
 }

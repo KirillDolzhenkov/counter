@@ -2,8 +2,11 @@ import React, {useReducer, useState} from 'react';
 import './App.css';
 import {Display} from "./components/Display/Display";
 import {ControlPanel} from "./components/ControlPanel/ControlPanel";
-import {addValueAC, CountReducer, resetValueAC} from "./reducers/CountReducer";
+import {addCurrentValueAC, CounterStateType, CountReducer, resetCurrentValueAC} from "./reducers/CountReducer";
 import {Settings} from "./components/Settings/Settings";
+import {useDispatch, useSelector} from "react-redux";
+import {RootReducerType, store} from "./store/store";
+import {SettingsStateType} from "./reducers/SettingsReducer";
 
 export type InitialStateType = {
     currentValue: number
@@ -13,23 +16,31 @@ export type InitialStateType = {
 
 function App() {
 
-    /**Локальные состояния: */
-    const [initialState, dispatch] = useReducer(CountReducer,{
+    /*const [initialState, dispatch] = useReducer(CountReducer,{
         currentValue: 0,
         minValue: 0,
         maxValue: 5,
-    });
+    });*/
 
+    const dispatch = useDispatch();
+    const counterData = useSelector<RootReducerType, CounterStateType>(
+        (state) => state.Counter);
+    const SettingsData = useSelector<RootReducerType, SettingsStateType>(
+        (state) => state.Settings);
+
+    /**Локальные состояния: */
     const [error, setError] = useState<string | null>("");
     const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
 
+
     /**Функции: */
     const incValue = () => {
-        dispatch(addValueAC())
+        dispatch(addCurrentValueAC())
+       /* setCurrentValue(currentValue + 1);*/
     }
 
     const resetValue = () => {
-        dispatch(resetValueAC());
+        dispatch(resetCurrentValueAC(SettingsData.minValue));
     }
 
     const checkError = () => {
@@ -40,8 +51,8 @@ function App() {
         }*/
     }
 
-    const changeWindow = (value: boolean) => {
-        setIsOpenSettings(value);
+    const onChangeWindowHandler = () => {
+        setIsOpenSettings(!isOpenSettings);
     }
 
     return (
@@ -50,22 +61,26 @@ function App() {
             <div className="app-body">
                 {
                     isOpenSettings
-                        ? <Settings changeWindow={changeWindow}/>
+                        ? <Settings
+                            changeWindow={onChangeWindowHandler}
+                        />
 
                         : <div className="counter">
-                            <Display initialState={initialState} error={error}/>
+                            <Display
+                                initialState={counterData}
+                                error={error}
+                            />
 
                             <ControlPanel
-                                initialState={initialState}
+                                initialState={counterData}
                                 incValue={incValue}
                                 resetValue={resetValue}
                                 checkError={checkError}
                                 /*setError={()=>{}}*/
-                                changeWindow={changeWindow}
+                                changeWindow={onChangeWindowHandler}
                             />
                         </div>
                 }
-
             </div>
         </div>
     );

@@ -1,8 +1,9 @@
 import React from 'react';
 import {InitialStateType} from "../../App";
+import {CounterStateType} from "../../reducers/CountReducer";
 
 type DisplayProps = {
-    initialState: InitialStateType
+    initialState: CounterStateType
     error: string | null
 }
 
