@@ -5,8 +5,8 @@ import {SettingsReducer} from "../reducers/SettingsReducer";
 export type RootReducerType = ReturnType<typeof RootReducer>
 
 const RootReducer = combineReducers({
-    Counter: CountReducer,
-    Settings: SettingsReducer
+    counter: CountReducer,
+    settings: SettingsReducer
 });
 
 export const store = legacy_createStore(RootReducer);

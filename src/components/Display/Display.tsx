@@ -1,19 +1,16 @@
 import React from 'react';
-import {InitialStateType} from "../../App";
-import {CounterStateType} from "../../reducers/CountReducer";
 
 type DisplayProps = {
-    initialState: CounterStateType
-    error: string | null
+    currentValue: number
+    error: boolean
 }
 
-export const Display: React.FC<DisplayProps> = ({initialState,error}) => {
-
-    const displayStyle = !!error ? "error" : "";
+export const Display = ({currentValue, error}: DisplayProps) => {
+    const displayStyle = error ? "error" : "";
 
     return (
         <div className="display">
-            <p className={displayStyle}>{initialState.currentValue}</p>
+            <p className={displayStyle}>{currentValue}</p>
         </div>
     );
 };

@@ -1,58 +1,63 @@
-import React from 'react';
-import {InitialStateType} from "../../App";
-import {ERROR} from "../../constants/constants";
-import {CounterStateType} from "../../reducers/CountReducer";
+import React, {useEffect} from 'react';
+
 
 type ControlPanelProps = {
-    initialState: CounterStateType
+    currentValue: number
+    minValue: number
+    maxValue: number
+
     incValue: () => void
     resetValue: () => void
-    checkError: () => void
     changeWindow: () => void
-    /*setError: (error: string) => void*/
+    setError: (error: boolean) => void
 }
 
-export const ControlPanel: React.FC<ControlPanelProps> = (
+export const ControlPanel= (
     {
-        initialState,
+        currentValue,
+        minValue,
+        maxValue,
         incValue,
         resetValue,
-        checkError,
-        changeWindow
-        /*setError*/
-    }
+        changeWindow,
+        setError
+    } : ControlPanelProps
 ) => {
 
-    const isIncActive = false/*initialState.currentValue >= initialState.maxValue;*/
-    const isResetActive = false/*initialState.currentValue === initialState.minValue;*/
-    const isErrorActive = false/*initialState.currentValue >= initialState.maxValue;*/
+    const isIncActive = currentValue >= maxValue;
+    const isResetActive = currentValue === minValue;
+    /*const isErrorActive = currentValue >= maxValue;*/
 
-    const incHandler = () => {
-        checkError();
+    useEffect(()=> {
+        if (currentValue >= maxValue) {
+            setError(true);
+        }
+    },[currentValue]);
+
+    const onIncValueHandler = () => {
         incValue();
     }
 
-    const resetHandler = () => {
+    const onResetHandler = () => {
         resetValue();
-        /*setError(ERROR.RESET_ERROR_VALUE);*/
+        setError(false);
     }
 
     const onOpenCounterHandler = () => {
         changeWindow();
     }
 
-
     return (
         <div className="control-panel">
             <button
                 className="button button-primary"
                 disabled={isIncActive}
-                onClick={() => incHandler()}
+                onClick={onIncValueHandler}
             >inc</button>
             <button
                 className="button button-secondary"
                 disabled={isResetActive}
-                onClick={() => resetHandler()}
+                onClick={onResetHandler}
             >reset</button>
             <button
                 className="button button-primary"

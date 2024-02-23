@@ -18,16 +18,10 @@ const initialTestState: SettingsStateType = {
 export const SettingsReducer = (state: SettingsStateType = initialTestState, action: SettingsActionType): SettingsStateType => {
     switch (action.type) {
         case ACTION_TYPE.SETTINGS.SET_MIN_VALUE: {
-            return {
-                ...state,
-                    minValue: action.payload.value,
-            };
+            return {...state, minValue: action.payload.value,};
         }
         case ACTION_TYPE.SETTINGS.SET_MAX_VALUE: {
-            return {
-                ...state,
-                    maxValue: action.payload.value
-            };
+            return {...state, maxValue: action.payload.value};
         }
         default: return state;
     }
