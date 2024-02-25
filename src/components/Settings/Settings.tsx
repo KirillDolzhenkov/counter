@@ -63,17 +63,17 @@ export const Settings = ({ changeWindow }: SettingsProps) => {
                         <input
                             type="number"
                             onChange={(e) => handleValueChange(e, MIN)}
-                            className={`set-field__display display ${errorClassName}`}
+                            className={`display ${errorClassName}`}
                             value={minValue}
                         />
                     </div>
                     <div className="button-items">
                         <button
-                            className="set-field__button button button-secondary"
+                            className="button button-secondary"
                             onClick={() => handleValueUpdate(MIN, -1)}
                         >-</button>
                         <button
-                            className="set-field__button button button-primary"
+                            className="button button-primary"
                             onClick={() => handleValueUpdate(MIN, 1)}
                         >+</button>
                     </div>
@@ -84,17 +84,17 @@ export const Settings = ({ changeWindow }: SettingsProps) => {
                         <input
                             type="number"
                             onChange={(e) => handleValueChange(e, MAX)}
-                            className={`set-field__display display ${errorClassName}`}
+                            className={`display ${errorClassName}`}
                             value={maxValue}
                         />
                     </div>
                     <div className="button-items">
                         <button
-                            className="set-field__button button button-secondary"
+                            className="button button-secondary"
                             onClick={() => handleValueUpdate(MAX, -1)}
                         >-</button>
                         <button
-                            className="set-field__button button button-primary"
+                            className="button button-primary"
                             onClick={() => handleValueUpdate(MAX, 1)}
                         >+</button>
                     </div>
@@ -103,7 +103,7 @@ export const Settings = ({ changeWindow }: SettingsProps) => {
             <div className="control-panel">
                 <button
                     disabled={error}
-                    className="control-panel__button button button-primary"
+                    className="button button-primary"
                     onClick={saveSettings}
                 >save</button>
             </div>
