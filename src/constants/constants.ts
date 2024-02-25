@@ -3,7 +3,7 @@ export const ERROR = {
     MAX_LIMIT_ERROR: "Over the maximum limit threshold",
     LOWER_LIMIT_ERROR: "Over the lower limit threshold",
     UPPER_LIMIT_ERROR: "Over the upper limit threshold"
-}
+} as const
 
 export const ACTION_TYPE = {
     COUNT: {
@@ -19,4 +19,9 @@ export const ACTION_TYPE = {
 export const APP_WINDOW = {
     COUNT: "Counter",
     SETTINGS: "Settings",
-}
+} as const
+
+export const CHANGE_VALUE_TYPE = {
+    MIN: "min",
+    MAX: "max"
+} as const
