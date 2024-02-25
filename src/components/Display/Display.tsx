@@ -6,7 +6,7 @@ type DisplayProps = {
 }
 
 export const Display = ({currentValue, error}: DisplayProps) => {
-    const displayStyle = error ? "error" : "";
+    let displayStyle = error ? "error" : "";
 
     return (
         <div className="display">

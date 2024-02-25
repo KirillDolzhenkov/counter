@@ -46,6 +46,8 @@ function App() {
 
     const toggleSettings = () => {
         setIsOpenSettings(!isOpenSettings);
+
+        setError(false); //!
     };
 
     return (

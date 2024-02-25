@@ -55,7 +55,7 @@ export const Settings = ({ changeWindow }: SettingsProps) => {
     const errorClassName = error ? 'error' : '';
 
     return (
-        <div className="set-field">
+        <div className="settings">
             <div className="input-field">
                 <div className="input-row">
                     <div className="input-items">
@@ -100,7 +100,7 @@ export const Settings = ({ changeWindow }: SettingsProps) => {
                     </div>
                 </div>
             </div>
-            <div className="control-panel">
+            <div className="control-panel settings">
                 <button
                     disabled={error}
                     className="button button-primary"
